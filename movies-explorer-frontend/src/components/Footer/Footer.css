@@ -5,6 +5,7 @@
     line-height: 1.21;
     margin: auto;
     max-width: calc(100% - 140px);
+    flex-shrink: 0;
   }
   
   @media (max-width: 768px) {

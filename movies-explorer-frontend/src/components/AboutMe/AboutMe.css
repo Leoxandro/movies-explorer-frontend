@@ -72,7 +72,7 @@
     }
   }
 
-  .student__title {
+  .about-me__title {
     margin: 0;
     font-size: 22px;
     font-weight: 400;
@@ -88,7 +88,7 @@
   
   @media (max-width: 550px) {
     .student__information {
-      max-width: auto;
+      max-width: 292px;
     }
   }
   

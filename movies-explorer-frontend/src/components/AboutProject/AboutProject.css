@@ -13,6 +13,7 @@
   @media (max-width: 500px) {
     .about {
       padding: 67px 0 62px 4px;
+      max-width: calc(100% - 20px);
     }
   }
   

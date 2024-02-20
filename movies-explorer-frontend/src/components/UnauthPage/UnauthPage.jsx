@@ -8,7 +8,7 @@ const UnauthPage = ({ title, children, text, link, linkText }) => {
   return (
     <section className="unauth-page">
       <div className="unauth-page__container">
-        <Link to="">
+        <Link to="/">
           <img className="logo unauth-page__logo" src={logo} alt='logo'/>
         </Link>
         <h2 className="unauth-page__title">{title}</h2>

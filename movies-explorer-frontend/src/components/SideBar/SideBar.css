@@ -114,12 +114,8 @@
   .sidebar__close-icon:active {
     transform: scale(1.1);
   }
-  
-  .sidebar__linked-button {
-    text-decoration: none;
-  }
 
-  .sidebar__btn_type-acc {
+  .sidebar__acc-btn {
     border-radius: 15px;
     background-color: #313131;
     width: 100px;
@@ -131,4 +127,13 @@
     cursor: pointer;
     pointer-events: all;
     border: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sidebar__acc-btn:hover {
+    opacity: 0.7;
   }

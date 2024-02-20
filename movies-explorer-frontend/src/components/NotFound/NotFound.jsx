@@ -5,7 +5,7 @@ import "./NotFound.css";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  const backHandler = () => navigate(-1);
+  const backHandler = () => navigate('/');
 
   return (
     <section className="not-found">

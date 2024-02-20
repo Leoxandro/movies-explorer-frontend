@@ -3,4 +3,7 @@
   background-color: #202020;
   color: #fff;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

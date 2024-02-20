@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 import Sidebar from '../SideBar/SideBar';
@@ -8,7 +8,7 @@ import logo from '../../images/logo.svg';
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isLoggedIn] = useState(false);
+    const [isLoggedIn] = useState(true);
 
     function toggleMenu() {
         setIsSidebarOpen(!isSidebarOpen);
@@ -19,9 +19,9 @@ const Header = () => {
 
     return (
         <header className='header'>
-            <Link className='header__logo-link' to='/'>
+            <NavLink className='header__logo-link' to='/'>
                 <img className='header__logo' src={logo} alt='logo' />
-            </Link>
+            </NavLink>
             <nav className='header__nav'>
                 <div className={`header__links ${isLoggedIn
                     ? ""
@@ -36,23 +36,17 @@ const Header = () => {
             </nav>
             <div className='header__account-menu'>
                 {isLoggedIn ? (
-                    <Link to='/profile'>
-                        <button className='header__btn_type-acc header__btn'>
-                            Аккаунт
-                        </button>
-                    </Link>
+                    <NavLink to='/profile' className='header__btn_type-acc header__btn'>
+                        Аккаунт
+                    </NavLink>
                 ) : (
                     <>
-                        <Link to='/signup'>
-                            <button className='header__btn_type-reg header__btn'>
-                                Регистрация
-                            </button>
-                        </Link>
-                        <Link to='/signin'>
-                            <button className='header__btn_type-login header__btn'>
-                                Войти
-                            </button>
-                        </Link>
+                        <NavLink to='/signup' className='header__btn_type-reg header__btn'>
+                            Регистрация
+                        </NavLink>
+                        <NavLink to='/signin' className='header__btn_type-login header__btn'>
+                            Войти
+                        </NavLink>
                     </>
                 )}
             </div>

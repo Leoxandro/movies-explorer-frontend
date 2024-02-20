@@ -10,13 +10,11 @@ import { countInputs } from "../../utils/countInputs";
 import "./Profile.css";
 
 const Profile = ({
-  setIsLoggedIn,
-  submitHandler,
   message,
   isLoading,
   messageModifier,
 }) => {
-  const { currentUser, setCurrentUser } = useContext(currentUserContext);
+  const { currentUser } = useContext(currentUserContext);
   const currentUserData = { name: currentUser.name, email: currentUser.email };
   const {
     values,
@@ -45,21 +43,11 @@ const Profile = ({
   }, [currentUser.name, currentUser.email, setValues]);
 
   const signOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("queryData");
-    localStorage.removeItem("savedMovies");
-    localStorage.removeItem("allMoviesData");
-    setIsLoggedIn(false);
-    navigate("/");
-    setCurrentUser({
-      name: "",
-      email: "",
-    });
+    navigate("/signin");
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    submitHandler({ name: values["name"], email: values["email"] });
   };
 
   return (
@@ -114,7 +102,7 @@ const Profile = ({
             </button>
             <button
               className="profile__btn profile__btn_type_red"
-              handler={signOut}
+              onClick={signOut}
             >
               Выйти из аккаунта
             </button>

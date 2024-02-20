@@ -68,6 +68,10 @@
     transition: all 0.2s ease-in-out;
   }
 
+  .profile__btn:hover {
+    opacity: 0.7;
+  }
+
   .profile__btn_type_red {
     color: #ee3465;
   }

@@ -9,7 +9,7 @@ import "./AboutMe.css";
 const AboutMe = () => {
   return (
       <section className="about-me main__about-me" id="student">
-        <h2 className="student__title">Студент</h2>
+        <h2 className="about-me__title">Студент</h2>
         <div className="student about-me__student">
           <div className="student__information">
             <h3 className="student__name">Алексей</h3>
