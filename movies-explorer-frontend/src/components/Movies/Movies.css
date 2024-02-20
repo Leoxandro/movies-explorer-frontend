@@ -76,3 +76,20 @@
   .button_type_hidden {
     display: none;
   }
+
+  .movies__btn_more {
+    transition: all 0.3s ease-in-out;
+    width: 320px;
+    height: 36px;
+    background-color: #202020;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    pointer-events: all;
+    border-style: none;
+    border: 1px solid #424242;
+  }
+
+  .movies__btn_more:hover {
+    opacity: 0.7;
+  }

@@ -1,85 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import "./MoviesCard.css";
+import savedPageContext from "../../context/savedPageContext";
 import likeIcon from '../../images/saveIcon.svg';
 import deleteIcon from '../../images/savedIcon.svg';
 
-const MoviesCard =({
-  onSavedPage,
-  savedMovies,
-  onSaveHandler,
-  onDeleteHandler,
-  ...props
-}) => {
+function MoviesCard({ title, duration, imageUrl }) {
+  const { onSavedPage } = useContext(savedPageContext);
   const [isSaved, setIsSaved] = useState(false);
 
-  useEffect(() => {
-    if (savedMovies.some((movie) => movie.movieId === props.id)) {
-      setIsSaved(true);
-    }
-  }, [savedMovies, props.id]);
-
-  const handleSave = () => {
-    const movieData = {
-      country: props.country,
-      director: props.director,
-      duration: props.duration,
-      year: props.year,
-      description: props.description,
-      image: props.image.url,
-      trailerLink: props.trailerLink,
-      nameRU: props.nameRU || props.nameEN,
-      nameEN: props.nameEN || props.nameRU,
-      thumbnail: props.image.formats.thumbnail.url,
-      movieId: props.id,
-    };
-    onSaveHandler(movieData, setIsSaved);
-  };
-
-  const handleDelete = () => {
-    onDeleteHandler(props._id || props.id, setIsSaved);
-  };
+  const handleSave = () => setIsSaved(!isSaved);
+  const handleDelete = () => console.log("Удаление карточки");
 
   return (
     <li className="movies-card">
       <div className="movies-card__header">
-        <h2 className="movies-card__title">{props.nameRU}</h2>
-        <p className="movies-card__duration">
-          {props.duration}
-        </p>
-      </div>
-      <a
-        className="movies-card__link"
-        href={props.trailerLink}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          className="movies-card__image"
-          src={onSavedPage ? props.image : props.image.url}
-          alt={props.nameRU}
-        />
-      </a>
-
-      <div className="movies-card__footer">
+        <img className="movies-card__image" src={imageUrl} alt={title} />
         <button
           className={`movies-card__btn ${
-             isSaved && !onSavedPage
-              ? "movies-card__btn_type_red"
-              : "movies-card__btn_type_gray"
+            isSaved && !onSavedPage ? "movies-card__btn_type_red" : ""
           }`}
-          handler={onSavedPage
-            ? handleDelete
-            : isSaved
-              ? handleDelete
-              : handleSave}
+          onClick={!onSavedPage ? handleSave : handleDelete }
         >
           {onSavedPage
-            ? (<div>{deleteIcon}</div>)
+            ? (<img src={deleteIcon} alt='delete' />)
             : (isSaved
-              ? (<div>{likeIcon}</div>)
+              ? ""
               : "Сохранить")}
         </button>
+      </div>
+      <div className="movies-card__footer">
+        <h2 className="movies-card__title">{title}</h2>
+          <p className="movies-card__duration">{duration} минут</p>
       </div>
     </li>
   );
