@@ -18,7 +18,7 @@
   
   @media (max-width: 500px) {
     .profile__container {
-      padding-top: 51px;
+      padding-top: 70px;
       max-width: calc(100% - 60px);
     }
   }
@@ -173,4 +173,8 @@
       height: 16px;
       font-size: 13px;
     }
+  }
+
+  .input_type_profile:nth-child(3) {
+    border-bottom: none;
   }

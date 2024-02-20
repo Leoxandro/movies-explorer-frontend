@@ -8,7 +8,7 @@ import logo from '../../images/logo.svg';
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isLoggedIn] = useState(true);
+    const [isLoggedIn] = useState(false);
 
     function toggleMenu() {
         setIsSidebarOpen(!isSidebarOpen);

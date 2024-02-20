@@ -49,6 +49,7 @@ npm start
 Для запуска потребуется Node.js версии 16.13.2.
 
 
-## Ссылка
+## Работа была сделана по макету: 
 
-https://leoxandro.github.io/movies-explorer-frontend/
+dark-1
+

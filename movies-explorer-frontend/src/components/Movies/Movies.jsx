@@ -79,7 +79,6 @@ const Movies = ({ savedMovies }) => {
               data={allMovies}
               onMainPage
           />
-          <p className="movies__message"></p>
           <div className="movies__footer">
             <button className="movies__btn_more">Ещё</button>
           </div>

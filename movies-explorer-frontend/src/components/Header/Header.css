@@ -185,3 +185,11 @@
         display: none;
     }
 }
+
+@media (max-width: 320px) {
+    .header__burger {
+        width: 22px;
+        height: 44px;
+        right: 23px;
+    }
+}

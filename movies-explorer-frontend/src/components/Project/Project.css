@@ -66,8 +66,9 @@
   
   @media (max-width: 500px) {
     .project__icon {
-      width: 10px;
-      height: 10px;
+      margin-right: 14px;
+      width: 18px;
+      height: 28px;
     }
   }
   

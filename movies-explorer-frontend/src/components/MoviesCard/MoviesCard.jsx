@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 
 import "./MoviesCard.css";
 import savedPageContext from "../../context/savedPageContext";
-import likeIcon from '../../images/saveIcon.svg';
 import deleteIcon from '../../images/savedIcon.svg';
 
 function MoviesCard({ title, duration, imageUrl }) {

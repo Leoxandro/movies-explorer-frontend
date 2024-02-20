@@ -1,13 +1,9 @@
 .app__search-form {
-    margin-bottom: 119px;
+    margin-bottom: 80px;
+    border-bottom: 1px #424242 solid;
+    padding-bottom: 40px;
   }
-  
-  @media (max-width: 768px) {
-    .app__search-form {
-      margin-bottom: 128px;
-    }
-  }
-  
+
   @media (max-width: 500px) {
     .app__search-form {
       margin-bottom: 91px;
@@ -63,6 +59,7 @@
     gap: 12px;
     justify-content: center;
     margin: auto;
+    align-items: center;
   }
   
   .search-form__label_disabled {
@@ -80,13 +77,12 @@
   
   .search-form__pseudo-item {
     box-sizing: border-box;
-    width: 36px;
-    height: 18px;
+    width: 34px;
+    height: 14px;
     box-shadow: 0px 4px 4px rgba(50, 50, 71, 0.08),
       0px 4px 8px rgba(50, 50, 71, 0.06);
     border-radius: 16px;
     display: flex;
-    padding: 2px;
     align-items: center;
     background-color: #2e2e2e;
     cursor: pointer;
@@ -111,8 +107,10 @@
   }
   
   .search-form__label-text {
-    font-size: 14px;
-    line-height: 1.28;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
   }
   
   @media (max-width: 500px) {
@@ -152,6 +150,12 @@
     text-align: center;
     color: #f00;
     margin-bottom: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .search-form__error {
+      margin-bottom: 20px;
+    }
   }
   
   @media (max-width: 500px) {
