@@ -6,11 +6,15 @@ import "./NavTab.css";
 const NavTab = () => {
   return (
     <nav className="nav-tab">
-      {navTabs.map((tab) => (
-        <a className="nav-tab__link" key={tab.id} href={tab.url}>
-          {tab.title}{" "}
-        </a>
-      ))}
+      <ul className="nav-tab__list">
+        {navTabs.map((tab) => (
+          <li key={tab.id} className="nav-tab__item">
+            <a className="nav-tab__link" href={tab.url}>
+              {tab.title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };

@@ -29,6 +29,20 @@ const savedMovies = [
       imageUrl:
         "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
     },
+    // {
+    //   id: 4,
+    //   title: "В погоне за Бенкси",
+    //   duration: 27,
+    //   imageUrl:
+    //     "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+    // },
+    // {
+    //   id: 5,
+    //   title: "В погоне за Бенкси",
+    //   duration: 27,
+    //   imageUrl:
+    //     "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+    // },
   ];
 
 function SavedMovies() {
@@ -47,7 +61,6 @@ function SavedMovies() {
                     data={savedMovies}
                     onSavedPage={onSavedPage}
                 />
-            <p className="movies__message"></p>
         </section>
         <Footer />
         </div>

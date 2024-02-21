@@ -1,15 +1,3 @@
-.nav-tab {
-    display: flex;
-    gap: 10px;
-
-  }
-  
-  @media (max-width: 500px) {
-    .nav-tab {
-      gap: 6px;
-    }
-  }
-  
   .nav-tab__link {
     width: 96px;
     height: 36px;
@@ -39,3 +27,17 @@
       line-height: 1.6;
     }
   }
+
+.nav-tab__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 500px) {
+  .nav-tab__list  {
+    gap: 6px;
+  }
+}

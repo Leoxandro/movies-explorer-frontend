@@ -5,12 +5,12 @@
   .register__inputs {
     padding: 0;
     border: none;
-    margin: 0 0 40px;
+    margin: 0 0 45px;
   }
   
   @media (max-width: 500px) {
     .register__inputs {
-      margin-bottom: 132px;
+      margin-bottom: 135px;
     }
   }
 
@@ -31,6 +31,12 @@
     font-size: 14px;
     line-height: 1.21;
     margin-bottom: 18px;
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .register__btn_type_submit:hover {
+    opacity: 0.7;
   }
 
   .register__btn_type_disabled {

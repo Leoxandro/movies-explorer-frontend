@@ -26,10 +26,24 @@ const Header = () => {
                 <div className={`header__links ${isLoggedIn
                     ? ""
                     : "header__links_type_hidden"}`}>
-                    <NavLink className='header__link' to='/movies'>
+                    <NavLink 
+                        className={({isActive}) =>
+                        isActive
+                            ? "header__link_type_active"
+                            : "header__link"
+                        } 
+                        to='/movies'
+                    >
                         Фильмы
                     </NavLink>
-                    <NavLink className='header__link' to='/saved-movies'>
+                    <NavLink 
+                        className={({isActive}) =>
+                            isActive
+                                ? "header__link_type_active"
+                                : "header__link"
+                        } 
+                        to='/saved-movies'
+                    >
                         Сохранённые фильмы
                     </NavLink>
                 </div>

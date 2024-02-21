@@ -6,14 +6,15 @@
   
   @media (max-width: 768px) {
     .about {
-      padding: 85px 0;
+      padding: 90px 0;
+      max-width: calc(100% - 100px);
     }
   }
   
   @media (max-width: 500px) {
     .about {
       padding: 67px 0 62px 4px;
-      max-width: calc(100% - 20px);
+      max-width: calc(100% - 31px);
     }
   }
   
@@ -21,13 +22,13 @@
     padding-top: 70px;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
     margin-bottom: 110px;
   }
   
   @media (max-width: 768px) {
     .about__cards {
-      gap: 30px;
+      gap: 35px;
       margin-bottom: 93px;
     }
   }

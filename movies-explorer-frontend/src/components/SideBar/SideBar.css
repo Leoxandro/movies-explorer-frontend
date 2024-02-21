@@ -67,6 +67,17 @@
   
   .sidebar__link_active {
     border-bottom: 2px solid #fff;
+    align-self: center;
+    list-style: none;
+    margin-bottom: 21px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+    transition: all 0.2s ease-in-out;
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 2px;
   }
   
   @media (max-width: 500px) {
@@ -89,8 +100,8 @@
   
   .sidebar__close-icon {
     position: absolute;
-    top: 22px;
-    right: 22px;
+    top: 26px;
+    right: 27px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     background-image: url('../../images/closeBtn.svg');

@@ -3,14 +3,20 @@
   }
   
   .login__inputs {
-    margin: 0 0 128px;
+    margin: 0 0 135px;
     padding: 0;
     border: none;
+  }
+
+  @media (max-width: 768px) {
+    .login__inputs {
+      margin-bottom: 133px;
+    }
   }
   
   @media (max-width: 500px) {
     .login__inputs {
-      margin-bottom: 220px;
+      margin-bottom: 223px;
     }
   }
 
@@ -31,6 +37,11 @@
     font-size: 14px;
     line-height: 1.21;
     margin-bottom: 18px;
+    pointer-events: all;
+  }
+
+  .login__btn_type_submit:hover {
+    opacity: 0.7;
   }
 
   .login__btn_type_disabled {

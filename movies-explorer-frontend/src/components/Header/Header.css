@@ -4,6 +4,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 500px) {
+    .header {
+        margin-bottom: 15px;
+    }
 }
 
 .header__logo {
@@ -65,6 +72,10 @@
 .header__link_type_active {
     font-weight: 500;
     text-decoration: underline;
+    font-size: 13px;
+    line-height: 18px;
+    outline: none;
+    color: #FFFFFF;
 }
 
 .header__account-menu {

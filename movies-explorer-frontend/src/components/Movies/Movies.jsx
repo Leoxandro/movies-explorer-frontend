@@ -43,27 +43,55 @@ const allMovies = [
     imageUrl:
       "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
   },
-  {
-    id: 6,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 7,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 8,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
+  // {
+  //   id: 6,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 7,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 8,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 9,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 10,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 11,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
+  // {
+  //   id: 12,
+  //   title: "В погоне за Бенкси",
+  //   duration: 27,
+  //   imageUrl:
+  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
+  // },
 ];
 
 const Movies = ({ savedMovies }) => {
@@ -73,6 +101,7 @@ const Movies = ({ savedMovies }) => {
   return (
     <div className="movies-page">
       <Header />
+      <main className="main">
         <section className="movies movies-page__movies" aria-label="Фильмы">
           <SearchForm/>
           <MoviesCardList
@@ -80,9 +109,10 @@ const Movies = ({ savedMovies }) => {
               onMainPage
           />
           <div className="movies__footer">
-            <button className="movies__btn_more">Ещё</button>
+            <button className="movies__footer-btn" type="button">Ещё</button>
           </div>
         </section>
+      </main>
       <Footer />
     </div>
   );

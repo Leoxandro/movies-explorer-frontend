@@ -59,17 +59,17 @@ export const navTabs = [
   export const projects = [
     {
       id: 1,
-      title: "Социальная сеть с фотографиями",
+      title: "Социальная сеть",
       url: "https://github.com/Leoxandro/react-mesto-api-full-gha",
     },
     {
       id: 2,
-      title: "Адаптивный сайт путешествий по России",
+      title: "Адаптивный сайт",
       url: "https://github.com/Leoxandro/russian-travel",
     },
     {
       id: 3,
-      title: "Одностраничный сайт об обучении",
+      title: "Одностраничный сайт",
       url: "https://github.com/Leoxandro/how-to-learn",
     },
   ];

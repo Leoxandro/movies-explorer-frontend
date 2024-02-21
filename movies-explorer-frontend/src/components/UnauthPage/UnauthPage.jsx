@@ -11,7 +11,7 @@ const UnauthPage = ({ title, children, text, link, linkText }) => {
         <Link to="/">
           <img className="logo unauth-page__logo" src={logo} alt='logo'/>
         </Link>
-        <h2 className="unauth-page__title">{title}</h2>
+        <h1 className="unauth-page__title">{title}</h1>
         {children}
         <p className="unauth-page__text">
           {text}{" "}

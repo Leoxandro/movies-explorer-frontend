@@ -1,10 +1,26 @@
 .saved-movies-page {
     box-sizing: border-box;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   
   .saved-movies-page__movies {
-    margin-bottom: 80px;
+    margin-bottom: 300px;
+  }
+
+  @media (max-width: 768px) {
+    .saved-movies-page__movies {
+      margin-bottom: 194px;
+    }
+  }
+  
+
+  @media (max-width: 500px) {
+    .saved-movies-page__movies {
+      margin-bottom: 215px;
+    }
   }
   
   .movies-page__movies-list_type_saved {

@@ -32,7 +32,7 @@
   
   @media (max-width: 500px) {
     .techs__texts {
-      padding-top: 58px;
+      padding-top: 60px;
       margin-bottom: 50px;
     }
   }
@@ -50,13 +50,16 @@
 
   @media (max-width: 768px) {
     .techs__title {
-        max-width: calc(100% - 60px);
+        max-width: calc(100% - 100px);
     }
   }
   
   @media (max-width: 500px) {
     .techs__title {
-        max-width: calc(100% - 20px);
+        max-width: calc(100% - 35px);
+        font-size: 18px;
+        padding-top: 3px;
+        padding-bottom: 27px;
     }
   }
 
@@ -103,6 +106,7 @@
     .techs__description {
       font-size: 11px;
       line-height: 1.45;
+      margin: 0 20px;
     }
   }
   

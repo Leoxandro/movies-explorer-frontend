@@ -1,13 +1,25 @@
 .project {
     list-style: none;
     border-bottom: 1px solid #424242;
-    padding: 20px 0;
+    padding: 15px 0;
     transition: all 0.2s ease-in-out;
   }
+
+.project:hover {
+  border-bottom: 1px solid #3ddc84;
+}
   
   @media (max-width: 768px) {
     .project {
       border-bottom: 1px solid #e6e6e6;
+      padding: 14px 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .project {
+      border-bottom: 1px solid #e6e6e6;
+      padding: 19px 0;
     }
   }
   
@@ -66,9 +78,9 @@
   
   @media (max-width: 500px) {
     .project__icon {
-      margin-right: 14px;
-      width: 18px;
-      height: 28px;
+      width: 20px;
+      height: 20px;
+      scale: .6;
     }
   }
   

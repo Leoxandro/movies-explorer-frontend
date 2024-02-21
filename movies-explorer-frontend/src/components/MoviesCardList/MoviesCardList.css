@@ -10,31 +10,40 @@
   
   @media (max-width: 1023px) {
     .movies-list {
-      grid-template-columns: repeat(auto-fit, 340px);
+      grid-template-columns: repeat(auto-fit, 339px);
       column-gap: 24px;
       row-gap: 26px;
       row-gap: 30px;
     }
   }
 
-  @media (max-width: 850px) {
+  @media (max-width: 768px) {
     .movies-list {
+      gap: 28px;
+      grid-template-columns: repeat(auto-fit, 339px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .movies-list {
+      gap: 22px;
       grid-template-columns: repeat(auto-fit, 300px);
     }
   }
-  
-  @media (max-width: 768px) {
-    .movies-list {
-      gap: 15px;
-    }
-  }
+
   
   .movies-page__movies-list {
-    margin: 0 0 60px;
+    margin: 0 0 57px;
   }
 
   @media (max-width: 768px) {
     .movies-page__movies-list {
       margin-bottom: 45px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .movies-page__movies-list {
+      margin-bottom: 46px;
     }
   }

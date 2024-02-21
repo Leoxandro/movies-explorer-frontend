@@ -6,8 +6,8 @@
   
   @media (max-width: 786px) {
     .about-me {
-      padding: 88px 0 0;
-      max-width: calc(100% - 60px);
+      padding: 85px 0 0;
+      max-width: calc(100% - 100px);
     }
   }
   
@@ -15,22 +15,23 @@
     .about-me {
       padding: 65px 0 0;
       max-width: calc(100% - 20px);
+
     }
   }
   
   .main__about-me {
-    margin-bottom: 105px;
+    margin-bottom: 200px;
   }
   
   @media (max-width: 786px) {
     .main__about-me {
-      margin-bottom: 90px;
+      margin-bottom: 167px;
     }
   }
   
   @media (max-width: 500px) {
     .main__about-me {
-      margin-bottom: 70px;
+      margin-bottom: 152px;
     }
   }
   
@@ -40,13 +41,13 @@
   
   @media (max-width: 786px) {
     .about-me__student {
-      margin-bottom: 90px;
+      margin-bottom: 60px;
     }
   }
   
   @media (max-width: 500px) {
     .about-me__student {
-      margin-bottom: 69px;
+      margin-bottom: 0px;
     }
   }
   
@@ -59,7 +60,7 @@
   
   @media (max-width: 768px) {
     .student {
-      padding-top: 62px;
+      padding-top: 66px;
       gap: 49px;
     }
   }
@@ -68,7 +69,7 @@
     .student {
       flex-direction: column-reverse;
       align-items: center;
-      gap: 40px;
+      gap: 35px;
     }
   }
 
@@ -81,9 +82,23 @@
     border-bottom: 1px solid #dadada;
     letter-spacing: -0.04em;
   }
+
+  @media (max-width: 500px) {
+    .about-me__title {
+      font-size: 18px;
+      padding-bottom: 26px;
+      margin: 0 5px;
+    }
+  }
   
   .student__information {
     max-width: 600px;
+  }
+
+  @media (max-width: 768px) {
+    .student__information {
+      max-width: 350px;
+    }
   }
   
   @media (max-width: 550px) {
@@ -91,6 +106,7 @@
       max-width: 292px;
     }
   }
+  
   
   .student__name {
     margin: 0;
@@ -144,14 +160,14 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 1.57;
-    margin-bottom: 99px;
+    margin-bottom: 77px;
   }
   
   @media (max-width: 768px) {
     .student__description {
       font-size: 12px;
       line-height: 1.5;
-      margin-bottom: 87px;
+      margin-bottom: 69px;
     }
   }
   
@@ -159,7 +175,7 @@
     .student__description {
       font-size: 11px;
       line-height: 1.45;
-      margin-bottom: 37px;
+      margin-bottom: 23px;
     }
   }
   
@@ -192,7 +208,7 @@
   }
   
   .portfolio__title {
-    margin: 0 0 40px;
+    margin: 0 0 45px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.11;
@@ -211,8 +227,26 @@
     margin: 0;
     padding: 0;
   }
-  
+
   .link__item_type_medium {
     font-size: 14px;
     font-weight: 500;
+  }
+
+  .portfolio {
+    margin-top: 100px;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio {
+      margin-top: 90px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .portfolio {
+      margin-top: 70px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
   }

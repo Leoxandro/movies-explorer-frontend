@@ -20,6 +20,7 @@ function MoviesCard({ title, duration, imageUrl }) {
             isSaved && !onSavedPage ? "movies-card__btn_type_red" : ""
           }`}
           onClick={!onSavedPage ? handleSave : handleDelete }
+          type="button"
         >
           {onSavedPage
             ? (<img src={deleteIcon} alt='delete' />)

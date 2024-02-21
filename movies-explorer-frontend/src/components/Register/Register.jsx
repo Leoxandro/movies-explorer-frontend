@@ -20,67 +20,72 @@ const Register = ({ submitHandler, isLoading, message }) => {
   };
 
   return (
-    <UnauthPage
-      title="Добро пожаловать!"
-      text="Уже зарегистрированы?"
-      link="/signin"
-      linkText="Войти"
-    >
-      <form className="register" name="register" onSubmit={onSubmit} noValidate>
-        <fieldset className="register__inputs">
-          <Input
-            name="name"
-            label="Имя"
-            modifier="unauth"
-            value={values["name"] || ""}
-            error={errors["name"]}
-            onChange={handleChange}
-            type="text"
-            autoComplete="off"
-            disabled={isLoading}
-          />
-          <Input
-            name="email"
-            label="E-mail"
-            modifier="unauth"
-            value={values["email"] || ""}
-            error={errors["email"]}
-            onChange={handleChange}
-            type="email"
-            autoComplete="off"
-            disabled={isLoading}
-          />
-          <Input
-            name="password"
-            label="Пароль"
-            modifier="unauth"
-            value={values["password"] || ""}
-            error={errors["password"]}
-            onChange={handleChange}
-            type="password"
-            autoComplete="off"
-            disabled={isLoading}
-          />
-        </fieldset>
-        <p
-          className={`unauth-page__message ${
-            message ? "unauth-page__message_type_fail" : ""
-          }`}
-        >
-          {message}
-        </p>
-        <button
-          className={`register__btn_type_submit ${
-            (!isFormValid || isLoading) && "register__btn_type_disabled"
-          }`}
-          type="submit"
-          isFormValid={isFormValid}
-          isLoading={isLoading}
-        >
-          {isLoading ? "Загрузка..." : "Зарегистрироваться"}
-        </button>
-      </form>
-    </UnauthPage>
+    <main className="main">
+      <UnauthPage
+        title="Добро пожаловать!"
+        text="Уже зарегистрированы?"
+        link="/signin"
+        linkText="Войти"
+      >
+        <form className="register" name="register" onSubmit={onSubmit} noValidate>
+          <fieldset className="register__inputs">
+            <Input
+              name="name"
+              label="Имя"
+              modifier="unauth"
+              value={values["name"] || ""}
+              error={errors["name"]}
+              onChange={handleChange}
+              type="text"
+              autoComplete="off"
+              disabled={isLoading}
+              placeholder='Введите имя пользователя'
+            />
+            <Input
+              name="email"
+              label="E-mail"
+              modifier="unauth"
+              value={values["email"] || ""}
+              error={errors["email"]}
+              onChange={handleChange}
+              type="email"
+              autoComplete="off"
+              disabled={isLoading}
+              placeholder='Введите email'
+            />
+            <Input
+              name="password"
+              label="Пароль"
+              modifier="unauth"
+              value={values["password"] || ""}
+              error={errors["password"]}
+              onChange={handleChange}
+              type="password"
+              autoComplete="off"
+              disabled={isLoading}
+              placeholder='Введите пароль'
+            />
+          </fieldset>
+          <p
+            className={`unauth-page__message ${
+              message ? "unauth-page__message_type_fail" : ""
+            }`}
+          >
+            {message}
+          </p>
+          <button
+            className={`register__btn_type_submit ${
+              (!isFormValid || isLoading) && "register__btn_type_disabled"
+            }`}
+            type="submit"
+            isFormValid={isFormValid}
+            isLoading={isLoading}
+          >
+            {isLoading ? "Загрузка..." : "Зарегистрироваться"}
+          </button>
+        </form>
+      </UnauthPage>
+    </main>
   );
 };
 

@@ -71,4 +71,5 @@
   
   .not-found__back:hover {
     transform: scale(1.1);
+    color: #3ddc84;
   }

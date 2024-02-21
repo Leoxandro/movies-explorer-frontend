@@ -11,20 +11,31 @@ const Sidebar = ({ isOpen, closeHandler }) => {
       >
         <nav className="sidebar__links">
           <NavLink
-            className="sidebar__link"
+            className={({isActive}) =>
+              isActive 
+                ? "sidebar__link_active"
+                : "sidebar__link" 
+            }
             to="/"
-            exact
           >
             Главная
           </NavLink>
           <NavLink
-            className="sidebar__link"
+            className={({isActive}) =>
+              isActive 
+                ? "sidebar__link_active"
+                : "sidebar__link" 
+            }
             to="/movies"
           >
             Фильмы
           </NavLink>
           <NavLink
-            className="sidebar__link"
+            className={({isActive}) => 
+              isActive 
+                ? "sidebar__link_active"
+                : "sidebar__link" 
+            }
             to="/saved-movies"
           >
             Сохранённые фильмы
