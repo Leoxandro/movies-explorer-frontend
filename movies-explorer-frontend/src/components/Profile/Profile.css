@@ -175,6 +175,7 @@
     }
   }
 
-  .input_type_profile:nth-child(3) {
+  .input_type_profile:last-child {
     border-bottom: none;
+    margin-top: 15px;
   }
