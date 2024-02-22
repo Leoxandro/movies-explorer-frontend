@@ -69,7 +69,7 @@ const Profile = ({
                 error={errors["name"]}
                 autoComplete="off"
                 disabled={isLoading}
-                placeholder='Введите имя пользователя'
+                placeholder='Введите имя пользователя' 
               />
               <Input
                 name="email"

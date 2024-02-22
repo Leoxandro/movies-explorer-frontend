@@ -11,22 +11,29 @@
     margin: 0 70px;
     max-width: calc(100% - 140px);
   }
-  
-  .movies-page__movies {
-    margin-bottom: 160px;
-  }
-  
-  @media (max-width: 768px) {
+
+  @media screen and (max-width: 1024px) {
     .movies {
       max-width: calc(100% - 60px);
       margin: 0 30px;
     }
   }
   
-  @media (max-width: 500px) {
+  .movies-page__movies {
+    margin-bottom: 160px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .movies {
+      max-width: calc(100% - 60px);
+    }
+  }
+  
+  @media screen and (max-width: 500px) {
     .movies {
       padding-top: 61px;
       max-width: calc(100% - 20px);
+      margin: 0 auto;
     }
   }
   
@@ -58,7 +65,7 @@
   }
 
   .movies__footer-btn:hover {
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .movies__footer-btn_type-hidden {

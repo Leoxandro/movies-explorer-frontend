@@ -20,10 +20,10 @@ const Input = ({ name, label, error, modifier, ...props }) => {
           name={name}
           {...props}
         />
+        <span className={`input__error input__error_type_${modifier}`}>
+          {error}
+        </span>
       </div>
-      <span className={`input__error input__error_type_${modifier}`}>
-        {error}
-      </span>
     </>
   );
 };

@@ -64,7 +64,7 @@ const Login = ({ submitHandler, isLoading, message }) => {
             {message}
           </p>
           <button
-            className={`login__btn_type_submit ${
+            className={`login__btn login__btn_type_submit ${
               (!isFormValid || isLoading) && "login__btn_type_disabled"
             }`}
             type="submit"

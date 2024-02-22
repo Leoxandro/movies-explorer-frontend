@@ -74,7 +74,7 @@ const Register = ({ submitHandler, isLoading, message }) => {
             {message}
           </p>
           <button
-            className={`register__btn_type_submit ${
+            className={`register__btn register__btn_type_submit ${
               (!isFormValid || isLoading) && "register__btn_type_disabled"
             }`}
             type="submit"

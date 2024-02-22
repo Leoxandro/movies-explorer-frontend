@@ -8,7 +8,7 @@ import logo from '../../images/logo.svg';
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isLoggedIn] = useState(false);
+    const [isLoggedIn] = useState(true);
 
     function toggleMenu() {
         setIsSidebarOpen(!isSidebarOpen);
@@ -29,7 +29,7 @@ const Header = () => {
                     <NavLink 
                         className={({isActive}) =>
                         isActive
-                            ? "header__link_type_active"
+                            ? "header__link header__link_type_active"
                             : "header__link"
                         } 
                         to='/movies'
@@ -39,7 +39,7 @@ const Header = () => {
                     <NavLink 
                         className={({isActive}) =>
                             isActive
-                                ? "header__link_type_active"
+                                ? "header__link header__link_type_active"
                                 : "header__link"
                         } 
                         to='/saved-movies'

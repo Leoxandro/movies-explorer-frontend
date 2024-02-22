@@ -65,7 +65,7 @@
     color: #3ddc84;
   }
   
-  .sidebar__link_active {
+  .sidebar__link_type_active {
     border-bottom: 2px solid #fff;
     align-self: center;
     list-style: none;

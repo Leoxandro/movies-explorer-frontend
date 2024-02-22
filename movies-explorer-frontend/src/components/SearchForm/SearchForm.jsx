@@ -77,9 +77,9 @@ const SearchForm = ({
           id="short-film"
           value="short-film"
         />
-        <div className="search-form__pseudo-item">
+        <span className="search-form__pseudo-item">
           <span className="search-form__circle"></span>
-        </div>
+        </span>
         <span className="search-form__label-text">Короткометражки</span>
       </label>
     </form>

@@ -6,7 +6,7 @@ import "./MoviesCardList.css";
 function MoviesCardList({ data, onSavedPage }) {
   return (
     <ul
-      className={`movies-list movies-page__movies-list
+      className={`movies-list
       ${onSavedPage
         ? "movies-page__movie-list_type_save"
         : ""

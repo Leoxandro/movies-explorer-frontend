@@ -13,7 +13,7 @@ const Sidebar = ({ isOpen, closeHandler }) => {
           <NavLink
             className={({isActive}) =>
               isActive 
-                ? "sidebar__link_active"
+                ? "sidebar__link sidebar__link_type_active"
                 : "sidebar__link" 
             }
             to="/"
@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, closeHandler }) => {
           <NavLink
             className={({isActive}) =>
               isActive 
-                ? "sidebar__link_active"
+                ? "sidebar__link sidebar__link_type_active"
                 : "sidebar__link" 
             }
             to="/movies"
@@ -33,7 +33,7 @@ const Sidebar = ({ isOpen, closeHandler }) => {
           <NavLink
             className={({isActive}) => 
               isActive 
-                ? "sidebar__link_active"
+                ? "sidebar__link sidebar__link_type_active"
                 : "sidebar__link" 
             }
             to="/saved-movies"
