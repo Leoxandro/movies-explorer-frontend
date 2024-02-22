@@ -1,0 +1,51 @@
+.register {
+    width: 100%;
+  }
+  
+  .register__inputs {
+    padding: 0;
+    border: none;
+    margin: 0 0 45px;
+  }
+  
+  @media (max-width: 500px) {
+    .register__inputs {
+      margin-bottom: 135px;
+    }
+  }
+
+  .register__btn_type_submit {
+    box-sizing: border-box;
+    background-color: #4285f4;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    padding: 13px 0;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.21;
+    margin-bottom: 18px;
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  .register__btn_type_submit:hover {
+    opacity: 0.8;
+  }
+
+  .register__btn_type_disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  @media (max-width: 500px) {
+    .register__btn_type_submit {
+      font-size: 12px;
+    }
+  }
