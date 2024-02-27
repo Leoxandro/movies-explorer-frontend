@@ -10,11 +10,13 @@ import { countInputs } from "../../utils/countInputs";
 import "./Profile.css";
 
 const Profile = ({
+  setIsLoggedIn,
+  submitHandler,
   message,
   isLoading,
   messageModifier,
 }) => {
-  const { currentUser } = useContext(currentUserContext);
+  const { currentUser, setCurrentUser } = useContext(currentUserContext);
   const currentUserData = { name: currentUser.name, email: currentUser.email };
   const {
     values,
@@ -43,11 +45,21 @@ const Profile = ({
   }, [currentUser.name, currentUser.email, setValues]);
 
   const signOut = () => {
-    navigate("/signin");
+    localStorage.removeItem("token");
+    localStorage.removeItem("queryData");
+    localStorage.removeItem("savedMovies");
+    localStorage.removeItem("allMoviesData");
+    setIsLoggedIn(false);
+    navigate("/");
+    setCurrentUser({
+      name: "",
+      email: "",
+    });
   };
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    submitHandler({ name: values["name"], email: values["email"] });
   };
 
   return (
@@ -56,7 +68,7 @@ const Profile = ({
     <main className="main">
       <section className="profile">
         <div className="profile__container">
-          <h1 className="profile__title">{`Привет, ${currentUser.name || "Имя пользователя"}!`}</h1>
+          <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
           <form className="profile__form" onSubmit={onSubmitForm} noValidate>
             <fieldset className="profile__inputs">
               <Input

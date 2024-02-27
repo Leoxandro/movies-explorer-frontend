@@ -1,115 +1,200 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import savedPageContext from "../../context/savedPageContext";
+import Preloader from "../Preloader/Preloader";
+import { mainApi } from "../../utils/MainApi";
+import { beatFilmApi } from "../../utils/MoviesApi";
+import { findOnlyShortMovies, filterMovies } from "../../utils/filters";
+import { useGetWidthBrowser } from "../../hooks/useGetWidthBrowser";
+import { getId } from "../../utils/getId";
 import "./Movies.css";
+import { 
+  DEFAULT_ERROR_MESSAGE,
+  LAPTOP_WIDTH,
+  LARGE_NEXT_PAGE_CARDS_COUNT,
+  LARGE_PAGE_CARDS_COUNT,
+  MOBILE_WIDTH,
+  MEDIUM_NEXT_PAGE_CARDS_COUNT,
+  MEDIUM_PAGE_CARDS_COUNT,
+  SMALL_NEXT_PAGE_CARDS_COUNT,
+  SMALL_PAGE_CARDS_COUNT,
+  ADDING_PAGE_AMOUNT,
+} from "../../utils/constants";
 
-const allMovies = [
-  {
-    id: 1,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 2,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 3,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 4,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 5,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 6,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 7,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 8,
-    title: "В погоне за Бенкси",
-    duration: 27,
-    imageUrl:
-      "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  },
-  // {
-  //   id: 9,
-  //   title: "В погоне за Бенкси",
-  //   duration: 27,
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  // },
-  // {
-  //   id: 10,
-  //   title: "В погоне за Бенкси",
-  //   duration: 27,
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  // },
-  // {
-  //   id: 11,
-  //   title: "В погоне за Бенкси",
-  //   duration: 27,
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  // },
-  // {
-  //   id: 12,
-  //   title: "В погоне за Бенкси",
-  //   duration: 27,
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1647755370031-2bb9782f922a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxNnx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-  // },
-];
+const Movies = ({ savedMovies, setSavedMovies, cardErrorHandler }) => {
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [initialCardsAmount, setInitialCards] = useState(0);
+  const [cardsPage, setCardsPage] = useState(0);
+  const [cardsInBundle, setCardsInBundle] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [resultMessage, setResultMessage] = useState("");
+  const [shortFilmsCheck, setShortFilmsCheck] = useState(false);
+  const [lastSearchQuery, setLastSearchQuery] = useState("");
+  const cardsCount = initialCardsAmount + cardsInBundle * cardsPage;
+  const token = localStorage.getItem("token");
+  const queryData = localStorage.getItem("queryData");
+  const width = useGetWidthBrowser();
 
-const Movies = ({ savedMovies }) => {
-  const { setOnSavedPage } = useContext(savedPageContext);
-  useEffect(() => setOnSavedPage(false), [setOnSavedPage]);
+  let allMovies = localStorage.getItem("allMoviesData");
+  let filteredMovies = JSON.parse(queryData)?.filteredMovies || [];
+  let filteredShortMovies = JSON.parse(queryData)?.filteredShortMovies || [];
+
+  useEffect(() => {
+    if (width >= LAPTOP_WIDTH) {
+      setInitialCards(LARGE_PAGE_CARDS_COUNT);
+      setCardsInBundle(LARGE_NEXT_PAGE_CARDS_COUNT);
+    } else if (width > MOBILE_WIDTH && width < LAPTOP_WIDTH) {
+      setInitialCards(MEDIUM_PAGE_CARDS_COUNT);
+      setCardsInBundle(MEDIUM_NEXT_PAGE_CARDS_COUNT);
+    } else if (width <= MOBILE_WIDTH) {
+      setInitialCards(SMALL_PAGE_CARDS_COUNT);
+      setCardsInBundle(SMALL_NEXT_PAGE_CARDS_COUNT);
+    }
+  }, [width]);
+
+  useEffect(() => {
+    if (queryData) {
+      setLastSearchQuery(JSON.parse(queryData)?.searchQuery);
+      setShortFilmsCheck(JSON.parse(queryData)?.isOnlyShortFilms);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!errorMessage) {
+      shortFilmsCheck
+        ? setMovies(filteredShortMovies.slice(0, cardsCount))
+        : setMovies(filteredMovies.slice(0, cardsCount));
+    }
+  }, [shortFilmsCheck, cardsCount, errorMessage]);
+
+  useEffect(() => {
+    if (queryData) {
+      const updatedQueryData = JSON.parse(queryData);
+      updatedQueryData.isOnlyShortFilms = shortFilmsCheck;
+      localStorage.setItem("queryData", JSON.stringify(updatedQueryData));
+    }
+  }, [shortFilmsCheck, queryData]);
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", removeAllMoviesData);
+    return () => {
+      window.removeEventListener("beforeunload", removeAllMoviesData);
+    };
+  }, []);
+
+  const removeAllMoviesData = () => localStorage.removeItem("allMoviesData");
+
+
+  const submitHandler = async (isOnlyShortFilms, searchQuery) => {
+    try {
+      setIsLoading(true);
+      if (!allMovies) {
+        const allMoviesData = await beatFilmApi.getMovies();
+        localStorage.setItem("allMoviesData", JSON.stringify(allMoviesData));
+        allMovies = localStorage.getItem("allMoviesData");
+      }
+      filteredMovies = filterMovies(searchQuery, JSON.parse(allMovies));
+      filteredShortMovies = findOnlyShortMovies(filteredMovies);
+      const queryData = {
+        filteredMovies,
+        filteredShortMovies,
+        searchQuery,
+        isOnlyShortFilms,
+      };
+      localStorage.setItem("queryData", JSON.stringify(queryData));
+
+      if (isOnlyShortFilms) {
+        setMovies(filteredShortMovies.slice(0, initialCardsAmount));
+        if (filteredShortMovies.length === 0) {
+          setResultMessage("Ничего не найдено");
+        }
+      } else {
+        setMovies(filteredMovies.slice(0, initialCardsAmount));
+        if (filteredShortMovies.length === 0) {
+          setResultMessage("Ничего не найдено");
+        }
+      }
+
+      setErrorMessage("");
+      setIsLoading(false);
+    } catch (e) {
+      setMovies([]);
+      setErrorMessage(DEFAULT_ERROR_MESSAGE);
+      console.log(e);
+      setIsLoading(false);
+    }
+  };
+
+  const moreButtonHandler = () =>
+    setCardsPage((prev) => prev + ADDING_PAGE_AMOUNT);
+
+  const saveMovie = (movie, likeHandler) => {
+    mainApi
+      .createMovie(movie, token)
+      .then((newMovie) => {
+        setSavedMovies([...savedMovies, newMovie]);
+        likeHandler(true);
+      })
+      .catch((e) => e.json())
+      .then((e) => {
+        if (e?.message) {
+          cardErrorHandler(e.message);
+        }
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const deleteMovie = (movieId, likeHandler) => {
+    const idInSavedMovies = getId(movieId, savedMovies);
+    mainApi
+      .removeMovie(idInSavedMovies, token)
+      .then(() => {
+        likeHandler(false);
+        setSavedMovies((state) =>
+          state.filter((m) => m._id !== idInSavedMovies)
+        );
+      })
+      .catch((e) => e.json())
+      .then((e) => {
+        if (e?.message) {
+          cardErrorHandler(e.message);
+        }
+      })
+      .catch((e) => console.log(e));
+  };
 
   return (
     <div className="movies-page">
       <Header />
       <main className="main">
         <section className="movies movies-page__movies" aria-label="Фильмы">
-          <SearchForm/>
-          <MoviesCardList
-              data={allMovies}
-              onMainPage
+          <SearchForm 
+            submitHandler={submitHandler}
+            checkbox={shortFilmsCheck}
+            setCheckbox={setShortFilmsCheck}
+            lastSearchQuery={lastSearchQuery}
+            isLoading={isLoading}
           />
+          {isLoading ? (
+            <Preloader />
+          ) : (
+            <MoviesCardList 
+              allMovies={movies}
+              savedMovies={savedMovies}
+              onSaveHandler={saveMovie}
+              onDeleteHandler={deleteMovie}
+              onSavedPage={false}
+            />
+          )}
+          {!isLoading && (
+             <p className="movies__message">{errorMessage || resultMessage}</p>
+          )}
           <div className="movies__footer">
-            <button className="movies__footer-btn" type="button">Ещё</button>
+            <button className="movies__footer-btn" type="button" handler={moreButtonHandler}>Ещё</button>
           </div>
         </section>
       </main>

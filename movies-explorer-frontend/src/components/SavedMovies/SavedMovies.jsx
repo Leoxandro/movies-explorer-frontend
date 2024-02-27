@@ -1,69 +1,89 @@
-import React , { useContext, useEffect } from "react";
+import React , { useEffect, useState } from "react";
 
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import savedPageContext from "../../context/savedPageContext";
+import { mainApi } from "../../utils/MainApi";
+import { findOnlyShortMovies, filterMovies } from "../../utils/filters";
 import "./SavedMovies.css";
 
-const savedMovies = [
-    {
-      id: 1,
-      title: "В погоне за Бенкси",
-      duration: 27,
-      imageUrl:
-        "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      id: 2,
-      title: "В погоне за Бенкси",
-      duration: 27,
-      imageUrl:
-        "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-    },
-    {
-      id: 3,
-      title: "В погоне за Бенкси",
-      duration: 27,
-      imageUrl:
-        "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-    },
-    // {
-    //   id: 4,
-    //   title: "В погоне за Бенкси",
-    //   duration: 27,
-    //   imageUrl:
-    //     "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-    // },
-    // {
-    //   id: 5,
-    //   title: "В погоне за Бенкси",
-    //   duration: 27,
-    //   imageUrl:
-    //     "https://images.unsplash.com/photo-1648315300731-84a74d0ee272?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60",
-    // },
-  ];
+const SavedMovies = ({
+  savedMovies,
+  setSavedMovies,
+  message,
+  cardErrorHandler,
+}) => {
+  const [shortFilmsCheck, setShortFilmsCheck] = useState(false);
+  const [moviesForRender, setMoviesForRender] = useState(savedMovies);
+  const [resultMessage, setResultMessage] = useState("");
+  const token = localStorage.getItem("token");
 
-function SavedMovies() {
-    const { onSavedPage, setOnSavedPage } = useContext(savedPageContext);
-    useEffect(() => setOnSavedPage(true), [setOnSavedPage]);
+  useEffect(() => setMoviesForRender(savedMovies), [savedMovies]);
+
+  useEffect(() => {
+    if (message) {
+      setResultMessage(message);
+    }
+  }, [message]);
+
+  const deleteMovie = (movieId, likeHandler) => {
+    mainApi
+      .removeMovie(movieId, token)
+      .then(() => {
+        likeHandler(false);
+        setSavedMovies((state) => state.filter((m) => m._id !== movieId));
+        setMoviesForRender((state) => state.filter((m) => m._id !== movieId));
+      })
+      .catch((e) => e.json())
+      .then((e) => {
+        if (e?.message) {
+          cardErrorHandler(e.message);
+        }
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const submitHandler = (isOnlyShortFilms, searchQuery) => {
+    const filteredMovies = filterMovies(searchQuery, savedMovies);
+    const filteredShortMovies = findOnlyShortMovies(filteredMovies);
+
+    if (isOnlyShortFilms) {
+      setMoviesForRender(filteredShortMovies);
+      if (filteredShortMovies.length === 0 && !message) {
+        setResultMessage("Ничего не найдено");
+      }
+    } else {
+      setMoviesForRender(filteredMovies);
+      if (filteredMovies.length === 0 && !message) {
+        setResultMessage("Ничего не найдено");
+      }
+    }
+  };
 
     return (
         <div className="saved-movies-page">
         <Header />
-        <section
+          <section
             className="movies saved-movies-page__movies"
             aria-label="Сохраненные фильмы"
             >
-            <SearchForm />
-                <MoviesCardList
-                    data={savedMovies}
-                    onSavedPage={onSavedPage}
-                />
-        </section>
-        <Footer />
-        </div>
+            <SearchForm
+              submitHandler={submitHandler}
+              checkbox={shortFilmsCheck}
+              setCheckbox={setShortFilmsCheck}
+            />
+            {moviesForRender && !message && (
+              <MoviesCardList
+                allMovies={moviesForRender}
+                onDeleteHandler={deleteMovie}
+                onSavedPage={true}
+              />
+            )}
+            <p className="movies__message">{resultMessage}</p>
+          </section>
+      <Footer />
+      </div>
     );
 };
 

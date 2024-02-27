@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 import Sidebar from '../SideBar/SideBar';
 import logo from '../../images/logo.svg';
+import currentUserContext from '../../context/currentUserProvider';
 
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const { currentUser } = useContext(currentUserContext);
+
+    useEffect(() => {
+        currentUser.name === ""
+            ? setIsLoggedIn(false)
+            : setIsLoggedIn(true);
+    }, [currentUser.name])
 
     function toggleMenu() {
         setIsSidebarOpen(!isSidebarOpen);

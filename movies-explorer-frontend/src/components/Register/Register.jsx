@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Input from "../Input/Input";
 import UnauthPage from "../UnauthPage/UnauthPage";
@@ -7,12 +7,14 @@ import { useFormValidity } from "../../hooks/useFormValidity";
 import { countInputs } from "../../utils/countInputs";
 import "./Register.css";
 
-const Register = ({ submitHandler, isLoading, message }) => {
+const Register = ({ submitHandler, isLoading, message, setMessage }) => {
   const { values, errors, handleChange, isFormValid, setIsFormValid } =
     useCustomValidation();
   const amountInputs = countInputs(".input");
 
   useFormValidity(values, errors, amountInputs, setIsFormValid);
+
+  useEffect(() => setMessage(""), [setMessage]);
 
   const onSubmit = (e) => {
     e.preventDefault();
