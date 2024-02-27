@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.karpov.students.nomoredomainsmonster.ru";
+export const BASE_URL = "https://api.karpov.nomoredomainswork.ru";
 
 const  checkServerResponse = (res) => {
     if (res.ok) {
