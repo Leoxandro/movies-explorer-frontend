@@ -18,7 +18,6 @@ import {
   DEFAULT_ERROR_MESSAGE,
   NOTIFICATION_DURATION,
 } from "../../utils/constants";
-import SignOut from '../SignOut/SignOut';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -175,7 +174,6 @@ const App = () => {
           <Route path='/' element={<Main />} />
           <Route path='*' element={<Navigate to='/404' />} />
           <Route path='/404' element={<NotFound />} />
-          <Route path='/signout' element={<SignOut />} />
           <Route path='/signin' element={<Login
             submitHandler={loginUser}
             isLoading={isLoading}

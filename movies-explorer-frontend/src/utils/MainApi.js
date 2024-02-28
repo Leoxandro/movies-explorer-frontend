@@ -12,16 +12,22 @@ class Api {
         return Promise.reject(res);
     }
 
-    getCurrentUserInfo({ name, email}, token) {
+    getCurrentUserInfo(token) {
         return fetch(`${this._baseUrl}/users/me`, {
-            method: "PATCH",
-            headers: { ...this._headers, Authorization: `Bearer ${token}` },
-            body: JSON.stringify({
-                name,
-                email,
-            }),
+          headers: { ...this._headers, Authorization: `Bearer ${token}` },
         }).then((res) => this._checkServerResponse(res));
-    }
+      }
+    
+      editCurrentUserInfo({ name, email }, token) {
+        return fetch(`${this._baseUrl}/users/me`, {
+          method: "PATCH",
+          headers: { ...this._headers, Authorization: `Bearer ${token}` },
+          body: JSON.stringify({
+            name,
+            email,
+          }),
+        }).then((res) => this._checkServerResponse(res));
+      }
 
     getSavedMovies(token) {
         return fetch(`${this._baseUrl}/movies`, {

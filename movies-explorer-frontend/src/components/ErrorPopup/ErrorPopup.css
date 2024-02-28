@@ -11,6 +11,7 @@
     border-radius: 10px;
     transform: translateX(-100%);
     transition: all 0.4s ease-in-out;
+    display: none;
   }
   
   @media (max-width: 500px) {
@@ -21,6 +22,7 @@
   
   .error-popup_visible {
     transform: translateX(20px);
+    display: block;
   }
   
   .error-popup__text {
