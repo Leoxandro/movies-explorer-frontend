@@ -65,21 +65,10 @@ const App = () => {
     if (isLoggedIn && !popupErrorStatus) {
       mainApi
         .getSavedMovies(token)
-        .then((response) => {
-          const moviesData = response.data; // Access the 'data' property
-          // Check if moviesData is an array before using filter
-          if (Array.isArray(moviesData)) {
-            const ownSavedMovies = moviesData.filter(
-              (movie) => movie.owner === currentUser._id
-            );
-            localStorage.setItem("savedMovies", JSON.stringify(ownSavedMovies));
-            setSavedMovies(ownSavedMovies);
-            setSavedMoviesMessage("");
-          } else {
-            // Handle the case where moviesData is not an array
-            console.error("moviesData is not an array:", moviesData);
-            setSavedMoviesMessage(DEFAULT_ERROR_MESSAGE);
-          }
+        .then((movies) => {
+          localStorage.setItem("savedMovies", JSON.stringify(movies));
+          setSavedMovies(movies);
+          setSavedMoviesMessage("");
         })
         .catch((err) => {
           setSavedMoviesMessage(DEFAULT_ERROR_MESSAGE);

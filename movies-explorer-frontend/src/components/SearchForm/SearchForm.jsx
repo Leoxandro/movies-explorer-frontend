@@ -50,7 +50,6 @@ const SearchForm = ({
           placeholder="Фильм"
           type="text"
           required
-          value={values["film-query"] || ""}
           autoComplete="off"
           disabled={isLoading}
         />

@@ -9,7 +9,7 @@ import currentUserContext from '../../context/currentUserProvider';
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const { currentUser } = useContext(currentUserContext);
 
     useEffect(() => {

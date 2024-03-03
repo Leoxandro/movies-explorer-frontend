@@ -121,10 +121,10 @@ const Movies = ({ savedMovies, setSavedMovies, cardErrorHandler }) => {
 
       setErrorMessage("");
       setIsLoading(false);
-    } catch (e) {
+    } catch (err) {
       setMovies([]);
       setErrorMessage(DEFAULT_ERROR_MESSAGE);
-      console.log(e);
+      console.log(err);
       setIsLoading(false);
     }
   };
@@ -139,13 +139,13 @@ const Movies = ({ savedMovies, setSavedMovies, cardErrorHandler }) => {
         setSavedMovies([...savedMovies, newMovie]);
         likeHandler(true);
       })
-      .catch((e) => e.json())
-      .then((e) => {
-        if (e?.message) {
-          cardErrorHandler(e.message);
+      .catch((err) => err.json())
+      .then((err) => {
+        if (err?.message) {
+          cardErrorHandler(err.message);
         }
       })
-      .catch((e) => console.log(e));
+      .catch((err) => console.log(err));
   };
 
   const deleteMovie = (movieId, likeHandler) => {
@@ -164,7 +164,7 @@ const Movies = ({ savedMovies, setSavedMovies, cardErrorHandler }) => {
           cardErrorHandler(e.message);
         }
       })
-      .catch((e) => console.log(e));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -194,7 +194,7 @@ const Movies = ({ savedMovies, setSavedMovies, cardErrorHandler }) => {
              <p className="movies__message">{errorMessage || resultMessage}</p>
           )}
           <div className="movies__footer">
-            <button className="movies__footer-btn" type="button" handler={moreButtonHandler}>Ещё</button>
+            <button className="movies__footer-btn" type="button" onClick={moreButtonHandler}>Ещё</button>
           </div>
         </section>
       </main>

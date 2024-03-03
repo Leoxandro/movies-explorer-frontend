@@ -38,7 +38,6 @@ const Login = ({ submitHandler, isLoading, message }) => {
               onChange={handleChange}
               type="email"
               autoComplete="off"
-              disabled={isLoading}
               placeholder='Введите email'
             />
             <Input
@@ -50,7 +49,6 @@ const Login = ({ submitHandler, isLoading, message }) => {
               onChange={handleChange}
               type="password"
               autoComplete="off"
-              disabled={isLoading}
               placeholder='Введите пароль'
             />
           </fieldset>
@@ -63,7 +61,7 @@ const Login = ({ submitHandler, isLoading, message }) => {
           </p>
           <button
             className={`login__btn login__btn_type_submit ${
-              (!isFormValid || isLoading) && "login__btn_type_disabled"
+              (!isFormValid) && "login__btn_type_disabled"
             }`}
             type="submit"
             isFormValid={isFormValid}
