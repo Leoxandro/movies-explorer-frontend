@@ -1,201 +1,38 @@
-.header {
-    height: 74px;
+.header__container {
     width: 100%;
+    height: 74px;
+    padding: 0 70px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-@media (max-width: 500px) {
-    .header {
-        margin-bottom: 15px;
-    }
-}
-
-.header__logo {
-    height: 38px;
+    gap: 44px;
+  }
+  
+  .header {
+    width: 100%;
+  }
+  
+  .header__logo-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .header__logo {
     width: 38px;
-    margin-top: 17px;
-    margin-left: 70px;
-    transition: all 0.2s ease-in-out;
-}
-
-.header__logo:hover {
-    opacity: .8;
-}
-
-@media (max-width: 768px) {
-    .header__logo {
-        margin-left: 30px;
+    height: 38px;
+  }
+  
+  @media screen and (max-width: 900px) {
+    .header__container {
+      padding: 0 30px;
     }
-}
-
-@media (max-width: 500px) {
-    .header__logo {
-        margin-top: 18px;
-        margin-left: 14px;
+  }
+  
+  @media screen and (max-width: 520px) {
+    .header__container {
+      padding: 0 14px;
     }
-}
-
-.header__nav {
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-}
-
-.header__links {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 16px;
-    margin: 0;
-}
-
-.header__links_type_hidden {
-    visibility: hidden;
-}
-
-.header__link {
-    font-size: 13px;
-    line-height: 18px;
-    outline: none;
-    text-decoration: none;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-.header__link:hover {
-    opacity: .7;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.header__link_type_active {
-    font-weight: 500;
-}
-
-.header__account-menu {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    gap: 30px;
-    padding: 0;
-    margin-right: 70px;
-}
-
-.header__btn {
-    border-radius: 3px;
-    color: black;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.header__btn:hover {
-    opacity: .8;
-}
-
-.header__btn_type-reg {
-    color: white;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-}
-
-.header__btn_type-login {
-    width: 76px;
-    height: 32px;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 16px;
-    background-color: #3DDC84;
-}
-
-.header__btn_type-acc {
-    border-radius: 15px;
-    background-color: #313131;
-    width: 100px;
-    height: 32px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16px;
-    color: white;
-    cursor: pointer;
-    pointer-events: all;
-}
-
-
-
-.header__burger {
-    display: none;
-    transition: all 0.2s ease-in-out;
-}
-
-.header__burger:hover {
-    opacity: 0.7;
-}
-
-
-.header__burger_type_hidden {
-    visibility: hidden;
-    pointer-events: none;
-    cursor: none;
-}
-
-@media screen and (max-width: 768px) {
-    .header__burger_type_hidden {
-        visibility: visible;
-        pointer-events: all;
-        cursor: pointer;
-    }
-    .header__burger {
-        height: 44px;
-        width: 44px;
-        top: 15px;
-        right: 30px;
-        position: absolute;
-        background-image: url('../../images/burger.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        pointer-events: all;
-        cursor: pointer; 
-        display: block;
-    }
-    .header__burger.open {
-        transition: all 0.3s ease-in-out;
-        transform: rotate(-360deg);
-        opacity: 1;
-    }
-    .header__burger.open:hover {
-        opacity: 0.7;
-    }
-    .header__account-menu {
-        visibility: hidden;
-        margin: 0;
-    }
-    .header__btn_type-acc {
-        visibility: hidden;
-        pointer-events: none;
-        cursor: none;
-    }
-    .header__links {
-        visibility: hidden;
-        pointer-events: none;
-        cursor: none;
-    }
-    .header__btn {
-        display: none;
-    }
-}
-
-@media (max-width: 320px) {
-    .header__burger {
-        width: 22px;
-        height: 44px;
-        right: 23px;
-    }
-}
+  }
+  

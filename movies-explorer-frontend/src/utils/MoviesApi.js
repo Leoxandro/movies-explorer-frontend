@@ -1,27 +1,17 @@
-class MoviesApi {
-    constructor({ baseUrl, headers }) {
-        this._baseUrl = baseUrl;
-        this._headers = headers;
+const getMovies = async () => {
+    const res = await fetch('https://api.nomoreparties.co/beatfilm-movies');
+    const data = await res.json();
+  
+    if (!res.ok) {
+      throw new Error(data.message);
     }
-
-    _checkServerResponse(res) {
-        if (res.ok) {
-            return res.json();
-        }
-
-        return Promise.reject(`Что-то пошли не так. Обратитесь к разработчику`);
-    }
-
-    getMovies() {
-        return fetch(this._baseUrl, {
-            headers: this._headers,
-        }).then((res) => this._checkServerResponse(res));
-    }
-}
-
-export const beatFilmApi = new MoviesApi({
-    baseUrl: "https://api.nomoreparties.co/beatfilm-movies",
-    headers: {
-        "Content-Type": "application/json",
-    },
-});
+  
+    return data;
+  }
+  
+  const MoviesApi = {
+    getMovies
+  };
+  
+  export default MoviesApi;
+  
