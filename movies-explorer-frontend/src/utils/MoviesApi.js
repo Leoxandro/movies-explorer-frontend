@@ -1,5 +1,7 @@
+import { filmsURL } from "../constants/constants";
+
 const getMovies = async () => {
-    const res = await fetch('https://api.nomoreparties.co/beatfilm-movies');
+    const res = await fetch(`${filmsURL}/beatfilm-movies`);
     const data = await res.json();
   
     if (!res.ok) {

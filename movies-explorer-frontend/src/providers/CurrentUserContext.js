@@ -32,10 +32,10 @@ const CurrentUserProvider = ({ children }) => {
     } else {
       setIsLoading(false);
     }
-  }, [navigate]);
+  }, []); //eslint-disable-line
 
   function handleSignOut() {
-    setUser(null);
+    setUser({});
     setApiErrMsg(null);
     localStorage.removeItem('jwt');
     localStorage.removeItem('searchTerm');
@@ -59,7 +59,8 @@ const CurrentUserProvider = ({ children }) => {
         setApiErrMsg(null);
         navigate("/movies");
       } catch (err) {
-        throw err;
+        console.error(err);
+        setApiErrMsg("Произошла ошибка регистрации. Пожалуйста, повторите попытку позже.");
       }
     },
     [navigate]
@@ -78,7 +79,8 @@ const CurrentUserProvider = ({ children }) => {
             navigate("/movies");
           });
       } catch (err) {
-        throw err;
+        console.error(err);
+        setApiErrMsg("Произошла ошибка входа. Пожалуйста, проверьте ваши учетные данные и повторите попытку.");
       }
     },
     [navigate]

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useLocation, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { ProtectedRoute, SignedRoute } from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -19,6 +19,7 @@ function App() {
   const headerRoutes = ["/", "/movies", "/saved-movies", "/profile"];
   const footerRoutes = ["/", "/movies", "/saved-movies"];
 
+
   return (
     <div className="app">
       <CurrentUserProvider>
@@ -28,8 +29,14 @@ function App() {
           )}
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/signin" element={<Login />} />
-            <Route path="/signup" element={<Register />} />
+            <Route 
+              path="/signin" 
+              element={<SignedRoute element={Login} />} 
+            />
+            <Route 
+              path="/signup" 
+              element={<SignedRoute element={Register} />} 
+            />
             <Route path="*" element={<NotFound />} />
             <Route
               path="/movies"

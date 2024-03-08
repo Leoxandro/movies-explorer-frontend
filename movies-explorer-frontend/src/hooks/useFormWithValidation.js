@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import { emailRegex, nameRegex } from "../constants/constants";
 
 const useFormWithValidation = (initialValues) => {
   const [values, setValues] = useState(initialValues);
@@ -7,11 +8,10 @@ const useFormWithValidation = (initialValues) => {
 
   const validateName = useCallback(
     (value) => {
-      const nameRegex = /^[A-Za-z\s-]*$/;
       if (!nameRegex.test(value)) {
-        return "Name should only contain letters, spaces and hyphens";
+        return "Имя может содержать только буквы, пробелы и дефисы";
       } else if (value.length < 3 || value.length > 30) {
-        return "Name should be between 3 and 30 characters long";
+        return "Имя должно состоять из минимум 2-ух символов и не превышать 30-ти";
       } else {
         return "";
       }
@@ -21,7 +21,6 @@ const useFormWithValidation = (initialValues) => {
 
   const validateEmail = useCallback(
     (value) => {
-      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       return emailRegex.test(value);
     },
     []
@@ -41,13 +40,13 @@ const useFormWithValidation = (initialValues) => {
 
     let validationError = '';
     if (!value) {
-      validationError = "This field is required";
+      validationError = "Это поле обязательное";
     } else if (name === 'email') {
-      validationError = validateEmail(value) ? '' : 'Invalid email';
+      validationError = validateEmail(value) ? '' : 'Некорректный email';
     } else if (name === 'name') {
       validationError = validateName(value);
     } else if (name === 'password') {
-      validationError = validatePassword(value) ? '' : 'Password must be at least 8 characters';
+      validationError = validatePassword(value) ? '' : 'Пароль должен содержать минимум 8 символов';
     }
 
     setValues({...values, [name]: value });

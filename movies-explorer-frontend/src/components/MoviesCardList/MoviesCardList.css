@@ -1,7 +1,6 @@
 .movies-list {
   display: flex;
   flex-direction: column;
-  padding-top: 70px;
 }
 
 .movies-list__items {

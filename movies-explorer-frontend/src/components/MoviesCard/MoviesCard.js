@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useCallback } from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
 import { SavedMoviesContext } from "../../providers/SavedMoviesProvider";
+import { filmsURL } from "../../constants/constants";
 
 const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
 
   useEffect(() => {
     if (typeof movie.image === "object") {
-      setImageUrl(`https://api.nomoreparties.co/${movie.image.url}`);
+      setImageUrl(`${filmsURL}/${movie.image.url}`);
     } else if (typeof movie.image === "string") {
       setImageUrl(movie.image);
     }

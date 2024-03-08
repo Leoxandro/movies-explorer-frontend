@@ -69,7 +69,7 @@
 }
 
 .movie__delete-button {
-  background-image: url(../../images/savedIcon.svg);
+  background-image: url(../../images/deleteIcon.svg);
   width: 20px;
   height: 20px;
 }

@@ -26,28 +26,71 @@ function Movies() {
     const savedSearch = localStorage.getItem('searchTerm');
     const savedCheckbox = JSON.parse(localStorage.getItem('isChecked'));
   
-    if (savedSearch || savedCheckbox || user) {
+    if (savedSearch || savedCheckbox) {
       setSearchTerm(savedSearch);
       setIsChecked(savedCheckbox);
       fetchMovies(savedSearch, savedCheckbox);
     }
+  }, [user]); //eslint-disable-line
+
+  useEffect(() => {
+    if (user) {
+      const fetchInitialMovies = async () => {
+        setIsLoading(true);
+        setRequestError(null);
+
+        try {
+          let data;
+          const initialMovies = JSON.parse(localStorage.getItem('movies'));
+
+          if (!initialMovies) {
+            data = await MoviesApi.getMovies();
+            localStorage.setItem('movies', JSON.stringify(data));
+          } else {
+            data = initialMovies;
+          }
+
+          const filteredMovies = filterMovies(data, searchTerm, isChecked);
+          setFetchedMovies(filteredMovies);
+          localStorage.setItem('searchTerm', searchTerm);
+          localStorage.setItem('isChecked', JSON.stringify(isChecked));
+          setHasSearched(true);
+        } catch (error) {
+          setRequestError(error.message);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchInitialMovies();
+    }
   }, [user, searchTerm, isChecked]);
 
   const fetchMovies = async (searchTerm = '', isChecked = false) => {
+    if (!user) {
+      return;
+    }
+
     setIsLoading(true);
     setRequestError(null);
-  
+
     try {
-      const data = await MoviesApi.getMovies();
-      if (!data) {
-        throw new Error('No data received from MoviesApi');
+      let data;
+      const initialMovies = JSON.parse(localStorage.getItem('movies'));
+
+      if (!initialMovies) {
+        data = await MoviesApi.getMovies();
+        localStorage.setItem('movies', JSON.stringify(data));
+      } else {
+        data = initialMovies;
       }
+
       const filteredMovies = filterMovies(data, searchTerm, isChecked);
-  
       setFetchedMovies(filteredMovies);
+      localStorage.setItem('searchTerm', searchTerm);
+      localStorage.setItem('isChecked', JSON.stringify(isChecked));
       setHasSearched(true);
     } catch (error) {
-      console.error('Error fetching movies:', error);
       setRequestError(error.message);
     } finally {
       setIsLoading(false);

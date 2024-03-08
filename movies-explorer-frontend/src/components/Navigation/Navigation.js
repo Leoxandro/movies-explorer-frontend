@@ -5,12 +5,7 @@ import { ReactComponent as MenuIcon } from "../../images/burger.svg";
 import { ReactComponent as CloseIcon } from "../../images/closeBtn.svg";
 import { Link, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../providers/CurrentUserContext";
-
-const navigationRoutes = [
-  { path: "/", title: "Главная", smallScreenOnly: true },
-  { path: "/movies", title: "Фильмы" },
-  { path: "/saved-movies", title: "Сохраненные фильмы" },
-];
+import { navigationRoutes } from "../../constants/constants";
 
 const NavigationLink = ({ path, title, activePath, onClick }) => (
   <li>

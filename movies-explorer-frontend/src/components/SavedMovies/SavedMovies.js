@@ -1,18 +1,28 @@
-import React, { useContext, useState, useMemo } from "react";
+import React, { useContext, useState, useMemo, useEffect } from "react";
 import "./SavedMovies.css";
 import { SavedMoviesContext } from "../../providers/SavedMoviesProvider";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import { filterMovies } from "../../utils/movieUtils";
+import { useNavigate } from "react-router-dom";
 
 function SavedMovies() {
   const { savedMovies, removeMovie } = useContext(SavedMoviesContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [formError, setFormError] = useState(null);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const navigate = useNavigate();
 
-  const filteredMovies = useMemo(() => filterMovies(savedMovies, searchTerm, isChecked), [savedMovies, searchTerm, isChecked]);
-  
+  const updateFilteredMovies = useMemo(() => {
+    return filterMovies(savedMovies, searchTerm, isChecked);
+  }, [savedMovies, searchTerm, isChecked]);
+
+  useEffect(() => {
+    // Обновляем filteredMovies при переходе на страницу /saved-movies
+    setFilteredMovies(updateFilteredMovies);
+  }, [updateFilteredMovies, navigate]);
+
   function handleSearch(term, isChecked) {
     setSearchTerm(term);
     setIsChecked(isChecked);

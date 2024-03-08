@@ -16,12 +16,15 @@ export function SavedMoviesProvider({ children }) {
       const data = await MainApi.addMovie(movie);
       setSavedMovies((moviesArray) => {
         if (Array.isArray(moviesArray)) {
-          return [...moviesArray, data];
+          const updatedMovies = [...moviesArray, data];
+          setSavedMovies(updatedMovies.data);
+          return updatedMovies;
         } else {
           console.error("Invalid structure for savedMovies");
           return data;
         }
       });
+      fetchSavedMovies();
       return data;
     } catch (error) {
       console.log(error);
@@ -37,26 +40,27 @@ export function SavedMoviesProvider({ children }) {
       setSavedMovies((moviesArray) =>
         moviesArray.filter((movie) => movie._id !== id)
       );
+      fetchSavedMovies();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchSavedMovies = async () => {
+    if (!user) {
+      return;
+    }
+    try {
+      const movies = await MainApi.getMovies();
+      setSavedMovies(movies.data);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    const fetchSavedMovies = async () => {
-      if (!user) {
-        return;
-      }
-      try {
-        const movies = await MainApi.getMovies();
-        setSavedMovies(movies.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     fetchSavedMovies();
-  }, [user]);
+  }, [user]); //eslint-disable-line
 
   return (
     <SavedMoviesContext.Provider

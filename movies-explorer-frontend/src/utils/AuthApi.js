@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.karpov.nomoredomainswork.ru";
+import { apiURL } from "../constants/constants";
 
 const checkResponseStatus = async (response) => {
   if (response.ok) {
@@ -20,7 +20,7 @@ const checkResponseStatus = async (response) => {
 };
 
 export const signUp = async (data) => {
-  const res = await fetch(`${BASE_URL}/signup`, {
+  const res = await fetch(`${apiURL}/signup`, {
     method: "POST",
     credentials: 'include',
     headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ export const signUp = async (data) => {
 };
 
 export const signIn = async (data) => {
-  const res = await fetch(`${BASE_URL}/signin`, {
+  const res = await fetch(`${apiURL}/signin`, {
     method: "POST",
     credentials: 'include',
     headers: { "Content-Type": "application/json" },

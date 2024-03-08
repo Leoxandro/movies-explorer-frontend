@@ -1,10 +1,9 @@
 import React from "react";
 import "./Techs.css";
 import Headline from "../HeadLine/HeadLine";
+import { techs } from "../../constants/constants";
 
 function Techs() {
-  const techs = ["HTML", "CSS", "JS", "React", "Git", "Express.js", "mongoDB"];
-
   return (
     <section className="techs" id='techs'>
       <Headline title={"Технологии"} />

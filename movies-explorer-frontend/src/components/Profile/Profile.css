@@ -130,7 +130,7 @@
 }
 
 .profile__save-button:disabled {
-  opacity: .8;
+  opacity: .7;
   cursor: not-allowed;
 }
 

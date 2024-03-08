@@ -10,16 +10,16 @@
     gap: 16px;
     margin: 0;
     list-style: none;
-    margin-right: 340px;
+    margin-right: 360px;
   }
   @media screen and (max-width: 1280px) {
     .nav-links {
-      margin-right: 270px;
+      margin-right: 320px;
     }
   }
 
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1096px) {
     .nav-links {
       margin-right: 190px;
     }

@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.karpov.nomoredomainswork.ru'
+import { apiURL, filmsURL } from "../constants/constants";
 
 const createRequest = async (url, method, body = null, token = null) => {
     const options = {
@@ -22,30 +22,30 @@ const createRequest = async (url, method, body = null, token = null) => {
     return data;
   }
   
-  const getUser = (token) => createRequest(`${BASE_URL}/users/me`, 'GET', null, token);
+  const getUser = (token) => createRequest(`${apiURL}/users/me`, 'GET', null, token);
   
-  const updateUser = (user) => createRequest(`${BASE_URL}/users/me`, 'PATCH', {
+  const updateUser = (user) => createRequest(`${apiURL}/users/me`, 'PATCH', {
     name: user.name,
     email: user.email
   });
   
-  const getMovies = () => createRequest(`${BASE_URL}/movies`, 'GET');
+  const getMovies = () => createRequest(`${apiURL}/movies`, 'GET');
   
-  const addMovie = (movie) => createRequest(`${BASE_URL}/movies`, 'POST', {
+  const addMovie = (movie) => createRequest(`${apiURL}/movies`, 'POST', {
     country: movie.country,
     director: movie.director,
     duration: movie.duration,
     year: movie.year,
     description: movie.description,
-    image: `https://api.nomoreparties.co/${movie.image.url}`,
+    image: `${filmsURL}/${movie.image.url}`,
     trailerLink: movie.trailerLink,
     nameRU: movie.nameRU,
     nameEN: movie.nameEN,
-    thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
+    thumbnail: `${filmsURL}/${movie.image.formats.thumbnail.url}`,
     movieId: movie.id
   });
   
-  const deleteMovie = (id) => createRequest(`${BASE_URL}/movies/${id}`, 'DELETE');
+  const deleteMovie = (id) => createRequest(`${apiURL}/movies/${id}`, 'DELETE');
   
   const MainApi = {
     getUser,

@@ -5,7 +5,7 @@ import "./NotFound.css";
 
 const NotFound = () => {
   const navigate = useNavigate();
-  const backHandler = () => navigate(-2);
+  const backHandler = () => navigate(-1);
 
   return (
     <main className="main">

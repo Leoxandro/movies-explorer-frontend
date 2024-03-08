@@ -6,9 +6,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Profile() {
   const { user, setUser, handleSignOut, apiErrMsg, setApiErrMsg } = useContext(CurrentUserContext);
-
   const [isEditMode, setIsEditMode] = useState(false);
-
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: user.name, password: user.email });
 
   useEffect(() => {
@@ -21,11 +19,16 @@ function Profile() {
   }, [user, resetForm]);
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       
       if (!values.name || !values.email) {
         setApiErrMsg("Оба поля обязательны");
+        return;
+      }
+
+      if (values.name === user.data.name && values.email === user.data.email) {
+        setApiErrMsg("Измените данные перед сохранением");
         return;
       }
   
@@ -44,11 +47,12 @@ function Profile() {
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, {user.name}!</h1>
+      <h1 className="profile__title">Привет, {user && user.data && user.data.name}!</h1>
       <form
         id="profile__form"
         className="profile__form"
         onSubmit={handleSubmit}
+        error={apiErrMsg}
       >
         <label className='profile__form-label'>
           Имя
@@ -62,7 +66,7 @@ function Profile() {
             minLength="3"
             maxLength="30"
             type="text"
-            placeholder="Введите имя пользователя"
+            placeholder={user && user.data && user.data.name}
           />
           <span className="profile__form-error">{errors.name}</span>
         </label>
@@ -77,7 +81,7 @@ function Profile() {
             onChange={handleChange}
             required
             type="email"
-            placeholder="Введите email"
+            placeholder={user && user.data && user.data.email}
           />
           <span className="profile__form-error">{errors.email}</span>
         </label>

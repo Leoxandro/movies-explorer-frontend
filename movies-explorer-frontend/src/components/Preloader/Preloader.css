@@ -48,6 +48,9 @@
     z-index: 10;
     padding: 20px;
     box-sizing: border-box;
+    margin-top: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .preloader__container {
@@ -60,8 +63,9 @@
     width: 100px;
     height: 100px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #3ddc84;
     border-radius: 50px;
   }
