@@ -107,7 +107,7 @@ function Profile() {
             >
               Редактировать
             </button>
-            <button className="profile__button" onClick={handleSignOut}>
+            <button className="profile__button" type="button" onClick={handleSignOut}>
               Выйти из аккаунта
             </button>
           </>
