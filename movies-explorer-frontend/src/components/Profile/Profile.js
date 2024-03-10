@@ -8,6 +8,8 @@ function Profile() {
   const { user, setUser, handleSignOut, apiErrMsg, setApiErrMsg } = useContext(CurrentUserContext);
   const [isEditMode, setIsEditMode] = useState(false);
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({ email: user.name, password: user.email });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -26,24 +28,36 @@ function Profile() {
         setApiErrMsg("Оба поля обязательны");
         return;
       }
-
+  
       if (values.name === user.data.name && values.email === user.data.email) {
         setApiErrMsg("Измените данные перед сохранением");
         return;
       }
+      
+      setIsLoading(true); 
   
-      MainApi.updateUser(values)
-        .then((data) => {
-          setUser({ name: data.name, email: data.email });
-          setIsEditMode(false);
-          resetForm();  
-        })
-        .catch((error) => {
-          setApiErrMsg(error.message);
-        });
+      try {
+        await MainApi.updateUser(values);
+        setUser((prevUser) => ({
+          ...prevUser,
+          data: {
+            ...prevUser.data,
+            name: values.name,
+            email: values.email,
+          },
+        }));
+        setIsEditMode(false);
+        resetForm();
+        setIsSuccess(true);
+      } catch (error) {
+        setApiErrMsg(error.message);
+      } finally {
+        setIsLoading(false); 
+      }
     },
-    [setUser, values, resetForm]  //eslint-disable-line
+    [setUser, values, resetForm, user] //eslint-disable-line
   );
+
 
   return (
     <main className="profile">
@@ -86,13 +100,18 @@ function Profile() {
           <span className="profile__form-error">{errors.email}</span>
         </label>
       </form>
+      {isSuccess && (
+        <div className="profile__success">
+            <p className="profile__success_message">Профиль успешно сохранен!</p>
+        </div>
+      )}
       <div className="profile__buttons">
         {isEditMode ? (
           <>
             <span className="profile__error">{apiErrMsg}</span>
             <button
               className="profile__save-button"
-              disabled={!isValid || (values.name === user.name && values.email === user.email)}
+              disabled={!isValid || isLoading || (values.name === user.name && values.email === user.email)}
               type="submit"
               form="profile__form"
             >

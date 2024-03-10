@@ -1,7 +1,7 @@
-import { filmsURL } from "../constants/constants";
+import { FILMS_URL } from "../constants/constants";
 
 const getMovies = async () => {
-    const res = await fetch(`${filmsURL}/beatfilm-movies`);
+    const res = await fetch(`${FILMS_URL}/beatfilm-movies`);
     const data = await res.json();
   
     if (!res.ok) {

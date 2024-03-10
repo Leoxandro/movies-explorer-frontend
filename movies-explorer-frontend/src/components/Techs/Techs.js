@@ -1,7 +1,7 @@
 import React from "react";
 import "./Techs.css";
 import Headline from "../HeadLine/HeadLine";
-import { techs } from "../../constants/constants";
+import { TECHS } from "../../constants/constants";
 
 function Techs() {
   return (
@@ -14,7 +14,7 @@ function Techs() {
             дипломном проекте.
         </p>
         <ul className="techs__list">
-          {techs.map((tech) => (
+          {TECHS.map((tech) => (
             <li key={tech} className="techs__list-item">
               {tech}
             </li>

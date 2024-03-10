@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useCallback } from "react";
 import "./MoviesCard.css";
 import { useLocation } from "react-router-dom";
 import { SavedMoviesContext } from "../../providers/SavedMoviesProvider";
-import { filmsURL } from "../../constants/constants";
+import { FILMS_URL } from "../../constants/constants";
 
 const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
   const location = useLocation();
@@ -25,7 +25,7 @@ const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
 
   useEffect(() => {
     if (typeof movie.image === "object") {
-      setImageUrl(`${filmsURL}/${movie.image.url}`);
+      setImageUrl(`${FILMS_URL}/${movie.image.url}`);
     } else if (typeof movie.image === "string") {
       setImageUrl(movie.image);
     }
@@ -36,12 +36,10 @@ const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
 
     if (location.pathname === "/movies") {
       if (!isSaved) {
-        console.log('Save movie button clicked:', movie);
         const savedMovie = await saveMovie(movie);
         setFoundMovie(savedMovie);
         setIsSaved(true);
       } else {
-        console.log('Remove movie button clicked:', foundMovie);
         if (foundMovie && foundMovie._id) {
           await removeMovie(foundMovie._id);
           setFoundMovie(null);
@@ -49,7 +47,6 @@ const MoviesCard = ({ movie, saveMovie, removeMovie }) => {
         }
       }
     } else if (location.pathname === "/saved-movies") {
-      console.log('Remove movie button clicked:', movie);
       if (movie._id) {
         await removeMovie(movie._id);
       }

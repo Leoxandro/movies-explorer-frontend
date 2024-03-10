@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import { settings } from "../../constants/constants";
+import { SETTINGS } from "../../constants/constants";
 
 function MoviesCardList({ movies, isSaved, saveMovie, removeMovie }) {
   const [windowDimensions, setWindowDimensions] = useState(window.innerWidth);
@@ -25,9 +25,9 @@ function MoviesCardList({ movies, isSaved, saveMovie, removeMovie }) {
   }, []);
 
   useEffect(() => {
-    const currentSetting = settings.find(
+    const currentSetting = SETTINGS.find(
       (setting) => windowDimensions >= setting.width
-    ) || settings[0];
+    ) || SETTINGS[0];
     setMoviesPerPage(currentSetting.moviesPerPage);
     setAddMovies(currentSetting.addMovies);
   }, [windowDimensions]);

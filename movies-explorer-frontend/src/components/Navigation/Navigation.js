@@ -5,7 +5,7 @@ import { ReactComponent as MenuIcon } from "../../images/burger.svg";
 import { ReactComponent as CloseIcon } from "../../images/closeBtn.svg";
 import { Link, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../providers/CurrentUserContext";
-import { navigationRoutes } from "../../constants/constants";
+import { NAVIGATION_ROUTES } from "../../constants/constants";
 
 const NavigationLink = ({ path, title, activePath, onClick }) => (
   <li>
@@ -52,7 +52,7 @@ function Navigation() {
     <>
       <nav className="nav">
         <NavigationLinks
-          routes={navigationRoutes.filter((route) => !route.smallScreenOnly)}
+          routes={NAVIGATION_ROUTES.filter((route) => !route.smallScreenOnly)}
           activePath={activePath}
         />
         <ProfileButton activePath={activePath} />
@@ -71,7 +71,7 @@ function Navigation() {
             <div className="nav-menu__curtain">
               <CloseIcon className="nav-menu__close" onClick={toggleMenu} />
               <NavigationLinks
-                routes={navigationRoutes}
+                routes={NAVIGATION_ROUTES}
                 activePath={activePath}
                 onClick={toggleMenu}
               />

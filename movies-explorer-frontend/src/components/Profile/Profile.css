@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding: 74px 0 70px;
   display: flex;
+  position: relative;
   flex-direction: column;
 }
 
@@ -169,5 +170,29 @@
   .profile__button {
     font-size: 12px;
     line-height: 15px;
+  }
+}
+
+.profile__success {
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 65%;
+  left: 22%;
+}
+
+
+.profile__success_message {
+  color: #3DDC84;
+  opacity: 0;
+  animation: fadeOut 4s ease-in-out forwards; 
+}
+
+@keyframes fadeOut {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
 }

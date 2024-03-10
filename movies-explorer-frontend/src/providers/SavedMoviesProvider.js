@@ -25,7 +25,6 @@ export function SavedMoviesProvider({ children }) {
         }
       });
       fetchSavedMovies();
-      return data;
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +39,6 @@ export function SavedMoviesProvider({ children }) {
       setSavedMovies((moviesArray) =>
         moviesArray.filter((movie) => movie._id !== id)
       );
-      fetchSavedMovies();
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +55,7 @@ export function SavedMoviesProvider({ children }) {
       console.log(error);
     }
   };
-
+  
   useEffect(() => {
     fetchSavedMovies();
   }, [user]); //eslint-disable-line

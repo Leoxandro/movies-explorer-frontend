@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { emailRegex, nameRegex } from "../constants/constants";
+import { EMAIL_REGEX, NAME_REGEX } from "../constants/constants";
 
 const useFormWithValidation = (initialValues) => {
   const [values, setValues] = useState(initialValues);
@@ -8,7 +8,7 @@ const useFormWithValidation = (initialValues) => {
 
   const validateName = useCallback(
     (value) => {
-      if (!nameRegex.test(value)) {
+      if (!NAME_REGEX.test(value)) {
         return "Имя может содержать только буквы, пробелы и дефисы";
       } else if (value.length < 3 || value.length > 30) {
         return "Имя должно состоять из минимум 2-ух символов и не превышать 30-ти";
@@ -21,7 +21,7 @@ const useFormWithValidation = (initialValues) => {
 
   const validateEmail = useCallback(
     (value) => {
-      return emailRegex.test(value);
+      return EMAIL_REGEX.test(value);
     },
     []
   );

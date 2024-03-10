@@ -1,14 +1,14 @@
 import React from "react";
 import "./Portfolio.css";
 import { ReactComponent as LinkIcon } from "../../images/arrow.svg";
-import { portfolio } from "../../constants/constants";
+import { PORTFOLIO } from "../../constants/constants";
 
 function Portfolio() {
   return (
     <section className="portfolio">
       <h2 className="portfolio__headline">Портфолио</h2>
       <ul className="portfolio__links-list">
-        {portfolio.map((item) => (
+        {PORTFOLIO.map((item) => (
           <li className="portfolio__links-item" key={item.title}>
             <a
               className="portfolio__link"

@@ -1,4 +1,4 @@
-import { apiURL, filmsURL } from "../constants/constants";
+import { API_URL, FILMS_URL } from "../constants/constants";
 
 const createRequest = async (url, method, body = null, token = null) => {
     const options = {
@@ -22,30 +22,30 @@ const createRequest = async (url, method, body = null, token = null) => {
     return data;
   }
   
-  const getUser = (token) => createRequest(`${apiURL}/users/me`, 'GET', null, token);
+  const getUser = (token) => createRequest(`${API_URL}/users/me`, 'GET', null, token);
   
-  const updateUser = (user) => createRequest(`${apiURL}/users/me`, 'PATCH', {
+  const updateUser = (user) => createRequest(`${API_URL}/users/me`, 'PATCH', {
     name: user.name,
     email: user.email
   });
   
-  const getMovies = () => createRequest(`${apiURL}/movies`, 'GET');
+  const getMovies = () => createRequest(`${API_URL}/movies`, 'GET');
   
-  const addMovie = (movie) => createRequest(`${apiURL}/movies`, 'POST', {
+  const addMovie = (movie) => createRequest(`${API_URL}/movies`, 'POST', {
     country: movie.country,
     director: movie.director,
     duration: movie.duration,
     year: movie.year,
     description: movie.description,
-    image: `${filmsURL}/${movie.image.url}`,
+    image: `${FILMS_URL}/${movie.image.url}`,
     trailerLink: movie.trailerLink,
     nameRU: movie.nameRU,
     nameEN: movie.nameEN,
-    thumbnail: `${filmsURL}/${movie.image.formats.thumbnail.url}`,
+    thumbnail: `${FILMS_URL}/${movie.image.formats.thumbnail.url}`,
     movieId: movie.id
   });
   
-  const deleteMovie = (id) => createRequest(`${apiURL}/movies/${id}`, 'DELETE');
+  const deleteMovie = (id) => createRequest(`${API_URL}/movies/${id}`, 'DELETE');
   
   const MainApi = {
     getUser,

@@ -1,4 +1,4 @@
-import { apiURL } from "../constants/constants";
+import { API_URL } from "../constants/constants";
 
 const checkResponseStatus = async (response) => {
   if (response.ok) {
@@ -20,7 +20,7 @@ const checkResponseStatus = async (response) => {
 };
 
 export const signUp = async (data) => {
-  const res = await fetch(`${apiURL}/signup`, {
+  const res = await fetch(`${API_URL}/signup`, {
     method: "POST",
     credentials: 'include',
     headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ export const signUp = async (data) => {
 };
 
 export const signIn = async (data) => {
-  const res = await fetch(`${apiURL}/signin`, {
+  const res = await fetch(`${API_URL}/signin`, {
     method: "POST",
     credentials: 'include',
     headers: { "Content-Type": "application/json" },

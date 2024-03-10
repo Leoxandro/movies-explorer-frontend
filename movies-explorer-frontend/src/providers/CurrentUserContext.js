@@ -33,9 +33,9 @@ const CurrentUserProvider = ({ children }) => {
       setIsLoading(false);
     }
   }, []); //eslint-disable-line
-
+  
   function handleSignOut() {
-    setUser(null);
+    setUser({});
     setApiErrMsg(null);
     localStorage.removeItem('jwt');
     localStorage.removeItem('searchTerm');
