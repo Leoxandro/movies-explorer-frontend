@@ -14,8 +14,8 @@ function Profile() {
   useEffect(() => {
     if (user) {
       resetForm({
-        name: user.name,
-        email: user.email,
+        name: user.data.name,
+        email: user.data.email,
       }, {}, false);
     }
   }, [user, resetForm]);
@@ -47,7 +47,6 @@ function Profile() {
           },
         }));
         setIsEditMode(false);
-        resetForm();
         setIsSuccess(true);
       } catch (error) {
         setApiErrMsg(error.message);
@@ -61,7 +60,7 @@ function Profile() {
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, {user && user.data && user.data.name}!</h1>
+      <h1 className="profile__title">Привет, {user.data.name}!</h1>
       <form
         id="profile__form"
         className="profile__form"
@@ -80,7 +79,6 @@ function Profile() {
             minLength="3"
             maxLength="30"
             type="text"
-            placeholder={user && user.data && user.data.name}
           />
           <span className="profile__form-error">{errors.name}</span>
         </label>
@@ -95,7 +93,6 @@ function Profile() {
             onChange={handleChange}
             required
             type="email"
-            placeholder={user && user.data && user.data.email}
           />
           <span className="profile__form-error">{errors.email}</span>
         </label>

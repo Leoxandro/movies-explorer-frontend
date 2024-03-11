@@ -35,7 +35,7 @@ const CurrentUserProvider = ({ children }) => {
   }, []); //eslint-disable-line
   
   function handleSignOut() {
-    setUser({});
+    setUser(null);
     setApiErrMsg(null);
     localStorage.removeItem('jwt');
     localStorage.removeItem('searchTerm');
