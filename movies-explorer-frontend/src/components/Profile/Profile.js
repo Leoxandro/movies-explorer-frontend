@@ -14,8 +14,8 @@ function Profile() {
   useEffect(() => {
     if (user) {
       resetForm({
-        name: user.data.name,
-        email: user.data.email,
+        name: user.name,
+        email: user.email,
       }, {}, false);
     }
   }, [user, resetForm]);
@@ -60,7 +60,7 @@ function Profile() {
 
   return (
     <main className="profile">
-      <h1 className="profile__title">Привет, {user.data.name}!</h1>
+      <h1 className="profile__title">Привет, {values.name}!</h1>
       <form
         id="profile__form"
         className="profile__form"
