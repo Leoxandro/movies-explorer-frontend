@@ -14,8 +14,8 @@ function Profile() {
   useEffect(() => {
     if (user) {
       resetForm({
-        name: user.name,
-        email: user.email,
+        name: user.data.name,
+        email: user.data.email,
       }, {}, false);
     }
   }, [user, resetForm]);

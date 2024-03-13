@@ -54,9 +54,12 @@ const CurrentUserProvider = ({ children }) => {
           password: data.password
         });
         localStorage.setItem("jwt", token);
-        setUser(data);
-        setApiErrMsg(null);
-        navigate("/movies");
+        return MainApi.getUser(token)
+          .then((data) => {
+            setUser(data);
+            setApiErrMsg(null);
+            navigate("/movies");
+          });
       } catch (err) {
         console.error(err);
         setApiErrMsg("Произошла ошибка регистрации. Пожалуйста, повторите попытку позже.");
