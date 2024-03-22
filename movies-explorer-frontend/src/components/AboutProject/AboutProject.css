@@ -1,66 +1,122 @@
 .about {
-    padding: 110px 0;
-    max-width: calc(100% - 140px);
-    margin: auto;
+  width: 100%;
+}
+
+.about__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 70px 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.about__columns {
+  display: flex;
+  flex-direction: row;
+  padding: 70px 0 110px;
+  gap: 50px;
+}
+
+.about__column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+}
+
+.about__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  color: var(--black-color);
+}
+
+.about__caption {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--black-color);
+}
+
+.about__stages {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(2, 36px);
+  height: 100%;
+  width: 100%;
+}
+
+.about__stage-span {
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #a0a0a0;
+}
+
+.about__stage-span_accent_green {
+  background-color: #3DDC84;
+  color: #000000;
+}
+
+.about__stage-span_accent_grey {
+  background-color: #303030;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 900px) {
+  .about__container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 90px;
   }
-  
-  @media (max-width: 768px) {
-    .about {
-      padding: 90px 0;
-      max-width: calc(100% - 100px);
-    }
+
+  .about__columns {
+    gap: 30px;
+    padding-bottom: 93px;
   }
-  
-  @media (max-width: 500px) {
-    .about {
-      padding: 67px 0 62px 4px;
-      max-width: calc(100% - 31px);
-    }
+
+  .about__column {
+    gap: 22px;
   }
-  
-  .about__cards {
-    padding-top: 70px;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 110px;
+
+  .about__caption {
+    font-size: 12px;
+    line-height: 18px;
   }
-  
-  @media (max-width: 768px) {
-    .about__cards {
-      gap: 35px;
-      margin-bottom: 93px;
-    }
+}
+
+@media screen and (max-width: 520px) {
+  .about__container {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 70px;
   }
-  
-  @media (max-width: 500px) {
-    .about__cards {
-      padding-top: 60px;
-      flex-direction: column;
-      gap: 56px;
-      margin-bottom: 60px;
-    }
+
+  .about__columns {
+    flex-direction: column;
+    gap: 56px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .about__column {
+    gap: 16px;
   }
 
   .about__title {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.21;
-    padding-bottom: 23px;
-    border-bottom: 1px solid #dadada;
-    letter-spacing: -0.04em;
+    font-size: 12px;
+    line-height: 18px;
   }
-  
-  @media (max-width: 767px) {
-    .about__title {
-      font-size: 23px;
-    }
+
+  .about__caption {
+    font-size: 11px;
+    line-height: 16px;
   }
-  
-  @media (max-width: 500px) {
-    .about__title {
-      font-size: 18px;
-      padding-bottom: 28px;
-    }
+
+  .about__stage-span {
+    font-size: 11px;
+    line-height: 13px;
   }
+}

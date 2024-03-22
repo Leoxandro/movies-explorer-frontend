@@ -53,3 +53,10 @@ npm start
 
 dark-2
 
+## Ссылка на пул реквест
+
+https://github.com/Leoxandro/movies-explorer-frontend/pull/3
+
+## Ссылка на готовый проект
+
+https://karpov.nomoredomainswork.ru/

@@ -1,38 +1,20 @@
-.saved-movies-page {
-    box-sizing: border-box;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .saved-movies-page__movies {
-    margin-bottom: 300px;
-  }
+.saved-movies {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 70px;
+}
 
-  @media (max-width: 768px) {
-    .saved-movies-page__movies {
-      margin-bottom: 192px;
-    }
+@media screen and (max-width: 800px) {
+  .saved-movies {
+    padding-left: 30px;
+    padding-right: 30px;
   }
-  
+}
 
-  @media (max-width: 500px) {
-    .saved-movies-page__movies {
-      margin-bottom: 215px;
-    }
+@media screen and (max-width: 520px) {
+  .saved-movies {
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  
-  .movies-page__movies-list_type_saved {
-    margin-bottom: 169px;
-  }
-  
-  .movies__message_type_error {
-    padding-top: 60px;
-  }
-  
-  @media (max-width: 768px) {
-    .movies__message_type_error {
-      padding-top: 80px;
-    }
-  }
+}

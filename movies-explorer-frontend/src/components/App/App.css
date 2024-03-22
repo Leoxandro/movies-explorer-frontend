@@ -1,9 +1,11 @@
 .app {
   font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
   background-color: #202020;
   color: #fff;
   position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
